@@ -20,17 +20,15 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Action</a>
                 <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
             </div>
         </li>
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-            <a class="nav-link text-white" href="../page/signup.html">Daftar</a>
+            <a class="nav-link text-white" href="{{route('signup')}}">Daftar</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" href="../page/login.html">Masuk</a>
+            <a class="nav-link text-white" href="{{route('login')}}">Masuk</a>
         </li>
 
         <li class="btn btn-success">

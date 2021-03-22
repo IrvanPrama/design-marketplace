@@ -21,5 +21,9 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
-
+Route::get('/signup', function () {
+    return view('signup');
+})->name('signup');
+Route::get('/signup/client', [AuthController::class, 'client'])->name('signup-client');
+Route::get('/signup/designer', [AuthController::class, 'designer'])->name('signup-designer');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');

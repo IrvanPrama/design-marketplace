@@ -19,4 +19,14 @@ class AuthController extends Controller
         }
         return redirect('/login');
     }
+
+    public function designer()
+    {
+        return view('signup-designer');
+    }
+
+    public function client()
+    {
+        return view('signup-client');
+    }
 }
