@@ -4,7 +4,7 @@
 @section('content')
 
 <!-- Daftar Button -->
-<div class="container">
+<div class="container" style="margin-bottom: 50px">
     <div class="col-lg-12 d-flex justify-content-center mt-5">
         <div class="col-lg-5" style="border-right: 4px solid rgb(0, 162, 255);">
             <div>
