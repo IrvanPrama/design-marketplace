@@ -1,0 +1,117 @@
+.navbar{
+    position: relative;
+    z-index: 1;
+}
+
+.nav-item{
+    margin: 0, 10px, 0, 10px !important;
+}
+
+.bg-oten{
+    background-color: rgb(0, 162, 255);
+}
+
+.text-oten{
+    color: rgba(0, 110, 255, 0.815);
+}
+
+.text-white{
+    color:white !important;
+}
+
+/* .cotainer{
+    padding-left: 10px;
+    padding-right: 10px;
+} */
+
+.jumbotron{
+    background-image: url(../../assets/jumbotron.png);
+    background-size: cover;
+    height: 480px;
+    text-align: center;
+    position: relative;
+}
+
+.jumbotron::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.877), rgba(0, 0, 0, 0.274));
+    position: absolute;
+    bottom: 0;
+}
+
+.jumbotron .container{
+    position: relative;
+    z-index: 1;
+}
+
+.bar-panel{
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    padding: 10px 50px 10px 50px;
+    margin-top: -90px;
+}
+
+.panel-img{
+    width: 100px;
+    height: 100px;
+}
+
+.text-center{
+    text-align: center;
+}
+.text-h1{
+    font-size: 35px;
+    font-weight: bold;
+    margin: 60px 0 ;
+    text-align: center;
+}
+.text-h3{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin: 27px 0;
+}
+.text-h4{
+    font-size: 12px;
+    text-align: center;
+}
+
+.icon-md{
+    height: 180px;
+    width: 180px;
+}
+
+.text-box{
+    justify-content: center;
+}
+
+.profil-card{
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin: 10px 10px 10px 25px;
+}
+
+.profil-card-name{
+    font-size: 15px;
+    padding: 18px 0 ;
+    font-weight: bold;
+}
+
+.card{
+    margin: 10px;
+    width: 15rem;
+}
+
+#footer{
+    background-color: rgba(0, 110, 255, 0.815);
+    height: 290px;
+    border: 0 solid;
+}
+
+li{
+    list-style: none;
+}
