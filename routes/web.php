@@ -22,6 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
 Route::get('/signup', function () {
     return view('auths.signup');
@@ -30,7 +31,7 @@ Route::get('/signup/client', [UserController::class, 'client'])->name('signup-cl
 Route::get('/signup/designer', [UserController::class, 'designer'])->name('signup-designer');
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', [DesignController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/designer', [DashboardController::class, 'index'])->middleware('auth');
 Route::post('/signup/client/store', [UserController::class, 'store'])->middleware('auth');
 Route::get('/review', [UserController::class, 'review'])->middleware('auth');

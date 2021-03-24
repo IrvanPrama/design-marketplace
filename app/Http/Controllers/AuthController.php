@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\User;
 
 class AuthController extends Controller
 {
@@ -19,5 +18,11 @@ class AuthController extends Controller
             return redirect('/dashboard');
         }
         return redirect('/login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }

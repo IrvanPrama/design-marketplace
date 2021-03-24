@@ -24,12 +24,12 @@
     @if (auth()->user()->role === 'designer')
     <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 Portofolio
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Lihat Designer Populer</a>
+                <a class="dropdown-item" href="{{route('logout')}}">Lihat Designer Populer</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Peringkat</a>
             </div>
@@ -37,27 +37,28 @@
     </ul>
     @endif
 
-    <div class="btn btn-primary" style="border-radius: 18px">
-        <ul class="navbar-nav ml-auto dropdown" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <li class="nav-item mr-3 ml-3 mt-2">
-                <p class="text-white">{{auth()->user()->name}}</p>
-            </li>
-            <li class="nav-item">
-                <div class="nav-linkdropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{asset('assets/user.png')}}" alt="profil" style="width: 40px; height:40px;">
-                </div>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/review" data-toggle="modal" data-target="#reviewModal">Buat
-                        Review</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Log Out</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Level <b>{{auth()->user()->role}}</b></a>
-                </div>
-            </li>
-        </ul>
+    <div class="btn-group">
+        <button class="btn btn-primary btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mr-3 ml-3 mt-2">
+                    <p class="text-white">{{auth()->user()->name}}</p>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-linkdropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{{asset('assets/user.png')}}" alt="profil" style="width: 40px; height:40px;">
+                    </div>
+                </li>
+            </ul>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" data-toggle="modal" data-target="#reviewModal">Buat Review</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{route('logout')}}">Log Out</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Level <b>{{auth()->user()->role}}</b></a>
+        </div>
     </div>
 </div>
 @endsection
@@ -82,78 +83,17 @@
 
     <!-- Content -->
     <section>
-        <div class="col-lg-12">
-            <div class="row d-flex justify-content-center">
-                <div class="card br-0">
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card br-0">
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card br-0">
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card br-0">
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card br-0">
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card br-0">
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on </p>
-                    </div>
-                </div>
-                <div class="card br-0">
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card br-0">
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
+        <div class="col-lg-12 mt-1" style="border-top: solid 3px rgb(0, 102, 255)">
+            <div class="row">
 
+                @foreach ($datadesign as $item)
+                <div class="card br-0">
+                    <img src="{{ asset('/assets/'.$item->design) }}" class="card-img-top" alt="design">
+                    <div class="card-body">
+                        <p class="card-text">{{$item->title}}</p>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -172,7 +112,7 @@
 </section>
 
 <!-- Modal Review-->
-<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content br-0">
