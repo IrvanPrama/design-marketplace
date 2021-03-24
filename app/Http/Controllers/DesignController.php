@@ -11,9 +11,9 @@ class DesignController extends Controller
     {
         // dd($request->all());
         $data = $request->design;
-        $filename = $data->getClientOriginalName;
+        $filename = $data->getClientOriginalName();
 
-        $dataupload = new Design;
+        $dataupload = new Design();
         $dataupload->name = $request->name;
         $dataupload->user_id = $request->user_id;
         $dataupload->title = $request->title;
