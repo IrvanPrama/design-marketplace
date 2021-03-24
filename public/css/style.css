@@ -106,10 +106,16 @@
     width: 15rem;
 }
 
-#footer{
+body{
+    min-height: fit-content;
+}
+
+footer{
     background-color: rgba(0, 110, 255, 0.815);
-    height: 290px;
-    border: 0 solid;
+}
+
+.br-0{
+    border-radius: 0 !important;
 }
 
 li{

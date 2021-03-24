@@ -272,8 +272,10 @@
         </div>
         <!-- End Kenapa Harus AkuDesain -->
     </div>
-
-
 </section>
 
+@endsection
+
+@section('footer')
+@yield('footer-desc')
 @endsection

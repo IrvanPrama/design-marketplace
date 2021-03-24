@@ -25,82 +25,31 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <section id="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-oten">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="{{asset('assets/logo.png')}}" alt="" style="height: 25px; width: 180px;">
-                </a>
+    <div style="min-height: 95vh">
+        <!-- Header -->
+        <section id="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-oten">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="{{asset('assets/logo.png')}}" alt="" style="height: 25px; width: 180px;">
+                    </a>
 
-                @yield('nav-item')
+                    @yield('nav-item')
 
-            </div>
-        </nav>
-        <!-- Akhir Navbar -->
+                </div>
+            </nav>
+            <!-- Akhir Navbar -->
 
-        @yield('content')
-
+            @yield('content')
+        </section>
+    </div>
 </body>
+
 <!-- Footer -->
-<footer id="footer">
+<footer>
     <div class="container">
         <div class="col-lg-12" style="padding-bottom: 0;">
-            <div class="row">
-                <div class="col-lg-5">
-                    <img src="../assets/logo.png" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
-                    <p class="text-white">AkuDesain adalah sebuah platform yang memudahkan anda dalam menemukan
-                        jasa
-                        desain.
-                        Sistem AkuDesain
-                        sangat mudah dipakai, cepat dalam respon dan membantu and secara akurat untuk mencari
-                        freelancer
-                        yang tepat</p>
-                </div>
-                <div class="col-lg-2"></div>
-                <div class="col-lg-5 text-white">
-                    <p style=" margin: 30px 0 10px 0; font-weight: bold;">Kontak Kami</p>
-                    <ul>
-                        <li>
-                            <a href="#" style="text-decoration: none; color: white;">
-                                <div class="row">
-                                    <img src="{{asset('assets/ig.png')}}" alt="ig"
-                                        style="width: 18px; height: 18px; margin: 5px 10px;">
-                                    <p>akudesain_id</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" style="text-decoration: none; color: white;">
-                                <div class="row">
-                                    <img src="{{asset('assets/facebook.png')}}" alt="fb" class="mini-icon"
-                                        style="width: 12px; height: 18px; margin: 5px 14px;">
-                                    <p>AkuDesain</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" style="text-decoration: none; color: white;">
-                                <div class="row">
-                                    <img src="{{asset('assets/mail.png')}}" alt="mail"
-                                        style="width: 18px; height: 14px; margin: 5px 10px;">
-                                    <p>AkuDesain.official@gmail.com</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" style="text-decoration: none; color: white;">
-                                <div class="row">
-                                    <img src="{{asset('assets/wa.png')}}" alt="wa"
-                                        style="width: 16px; height: 14px; margin: 5px 10px;">
-                                    <p>+62 87 776 966 876</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
+            @yield('footer')
             <div class="row justify-content-center">
                 <p style="margin-top: 10px; color: white;">Copyright &copy AkuDesain 2021</p>
             </div>

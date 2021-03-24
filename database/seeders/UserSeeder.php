@@ -20,6 +20,8 @@ class UserSeeder extends Seeder
             'name' => 'Admin Aplikasi',
             'email' => 'user@gmail.com',
             'role' => 'user',
+            'no_hp' => '08585888818',
+            'job' => 'pebisnis kuliner',
             'password' => bcrypt('12345'),
             'remember_token' => Str::random(60),
         ]);

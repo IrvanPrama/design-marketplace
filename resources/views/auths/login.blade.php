@@ -64,3 +64,7 @@
 <!-- End Daftar Button -->
 <!-- End Content -->
 @endsection
+
+@section('footer')
+@yield('footer-desc')
+@endsection

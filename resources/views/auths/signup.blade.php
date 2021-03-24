@@ -3,11 +3,11 @@
 
 @section('content')
 <!-- Daftar Button -->
-<div class="container">
+<div class="container" style="margin-top: 100px; margin-bottom: 100px;">
     <div class="col-lg-12 d-flex justify-content-center mt-5">
         <div class="col-lg-5" style="border-right: 4px solid rgb(0, 162, 255);">
             <div>
-                <img src="../assets/designer.png" alt="" style="width: 40%; height: 40%; margin: 0 40% 0 33%;">
+                <img src="{{asset('assets/daftar.png')}}" alt="" style="width: 40%; height: 40%; margin: 0 40% 0 33%;">
                 <p class="text-h3" style="margin: 10px auto 3px auto; font-weight:bold; font-size: 2rem;">Client
                 </p>
                 <p class="text-h4 mx-5" style="font-weight: 500;">Sebagai desainer yang memiliki passion
@@ -52,4 +52,7 @@
 <!-- End Daftar Button -->
 </body>
 
+@endsection
+@section('footer')
+@yield('footer-desc')
 @endsection
