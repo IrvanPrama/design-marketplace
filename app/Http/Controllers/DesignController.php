@@ -9,13 +9,17 @@ class DesignController extends Controller
 {
     public function index()
     {
-        $datadesign = Design::latest()->get();
-        return view('dashboard.index', compact('datadesign'));
+        if (auth()->user()->role == 'user') {
+            $datadesign = Design::latest()->get();
+            return view('dashboard.index', compact('datadesign'));
+        }
+        return redirect('/dashboard/designer');
     }
 
     public function view_designer()
     {
-        $datadesign = Design::latest()->get();
+        $id = auth()->user()->id;
+        $datadesign = Design::where('user_id', $id)->get();
         return view('dashboard-designer.index', compact('datadesign'));
     }
 
@@ -33,6 +37,6 @@ class DesignController extends Controller
         $data->move(public_path() . '/assets', $filename);
         $dataupload->save();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard/designer');
     }
 }

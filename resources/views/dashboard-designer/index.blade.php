@@ -38,10 +38,10 @@
     @endif
 
     <div class="btn-group">
-        <button class="btn btn-primary btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+        <button class="btn btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            style="border-radius:18px;">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-3 ml-3 mt-2">
+                <li class="nav-item mr-3 ml-3 pt-2">
                     <p class="text-white">{{auth()->user()->name}}</p>
                 </li>
                 <li class="nav-item">

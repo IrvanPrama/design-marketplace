@@ -33,7 +33,7 @@ Route::get('/signup/designer', [UserController::class, 'designer'])->name('signu
 
 Route::get('/dashboard', [DesignController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/designer', [DesignController::class, 'view_designer'])->middleware('auth');
-Route::post('/signup/client/store', [UserController::class, 'store'])->middleware('auth');
+Route::post('/signup/account', [UserController::class, 'store']);
 Route::get('/review', [UserController::class, 'review'])->middleware('auth');
 Route::post('/review/create', [UserController::class, 'review_create'])->middleware('auth');
 Route::post('/design/upload', [DesignController::class, 'store']);

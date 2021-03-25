@@ -47,7 +47,7 @@
                             Sebagai
                             Client (Gratis)</p>
                     </b>
-                    <form action="/signup/client/store" method="post">
+                    <form action="/signup/account" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="role" value="user">
                         <b>
