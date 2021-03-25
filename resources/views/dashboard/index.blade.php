@@ -69,15 +69,7 @@
 
     <!-- Judul -->
     <section>
-        @if (auth()->user()->role === 'user')
         <p class="text-h1 text-oten" style="text-align: left;">Desain Terbaru</p>
-        @else
-        <p class="text-h1 text-oten" style="text-align: left; margin-bottom:10px;">Koleksi Design Kamu</p>
-        <div class="btn btn-success" style="border-radius: 0" data-toggle="modal" data-target="#uploadModal"><span><i
-                    class="fas fa-plus"></i></span>
-            Upload Design
-        </div>
-        @endif
     </section>
     <!-- End Judul -->
 
@@ -100,7 +92,7 @@
     <!-- End Content -->
 
     <!-- Button Pesan -->
-    <p class="text-h1 text-oten">Buat Designmu Sekarang!</p>
+    <p class="text-h1 text-oten">Pesan Design!</p>
     <div class="row" style="margin-bottom: 100px;">
         <div class="col-lg-12 d-flex justify-content-center">
             <div class="btn btn-primary" style="border-radius: 0">Order Desain</div>
@@ -140,46 +132,6 @@
     </div>
 </div>
 <!-- End Modal Review-->
-
-<!-- Modal Upload Design-->
-<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content br-0">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Unggah Design Kamu</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/design/upload" method="post" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <input type="text" id="name" name="name" class="form-control" value="{{auth()->user()->name}}"
-                        hidden>
-                    <input type="text" id="user_id" name="user_id" class="form-control" value="{{auth()->user()->id}}"
-                        hidden>
-                    <div class="form-group">
-                        <label for="title">Judul</label>
-                        <input class="form-control" id="title" name="title" style="border-radius: 0"
-                            placeholder="Color Spash dengan teknik photomorpic">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="file" id="design" name="design" style="border-radius: 0"
-                            placeholder="Color Spash dengan teknik photomorpic">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary br-0">Unggah</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Modal Upload Design-->
-
-
-
 
 @endsection
 

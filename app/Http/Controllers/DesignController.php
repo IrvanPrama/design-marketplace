@@ -13,6 +13,12 @@ class DesignController extends Controller
         return view('dashboard.index', compact('datadesign'));
     }
 
+    public function view_designer()
+    {
+        $datadesign = Design::latest()->get();
+        return view('dashboard-designer.index', compact('datadesign'));
+    }
+
     public function store(Request $request)
     {
         $data = $request->design;
