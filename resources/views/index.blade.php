@@ -130,110 +130,20 @@
         <p class="text-h1 text-oten" style="text-align: left;">Desain Terbaru</p>
         <div class="col-lg-12">
             <div class="row d-flex justify-content-center">
-                <div class="card">
-                    <div class="row">
-                        <img class="profil-card" src="../assets/box.png" alt="profil">
-                        <p class="profil-card-name text-oten">Wawan Hendrawan</p>
+                @foreach ($datadesign as $item)
+                <div class="card br-0">
+                    <div class="row mt-0">
+                        <img class="profil-card" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
+                        <p class="profil-card-name text-oten">
+                            {{$item->name}}
+                        </p>
                     </div>
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
+                    <img src="{{ asset('/assets/'.$item->design) }}" class="card-img-top" alt="design">
                     <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
+                        <p class="card-text">{{$item->title}}</p>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="row">
-                        <img class="profil-card" src="../assets/box.png" alt="profil">
-                        <p class="profil-card-name text-oten">Wawan Hendrawan</p>
-                    </div>
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <img class="profil-card" src="../assets/box.png" alt="profil">
-                        <p class="profil-card-name text-oten">Wawan Hendrawan</p>
-                    </div>
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <img class="profil-card" src="../assets/box.png" alt="profil">
-                        <p class="profil-card-name text-oten">Wawan Hendrawan</p>
-                    </div>
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <img class="profil-card" src="../assets/box.png" alt="profil">
-                        <p class="profil-card-name text-oten">Wawan Hendrawan</p>
-                    </div>
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <img class="profil-card" src="../assets/box.png" alt="profil">
-                        <p class="profil-card-name text-oten">Wawan Hendrawan</p>
-                    </div>
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <img class="profil-card" src="../assets/box.png" alt="profil">
-                        <p class="profil-card-name text-oten">Wawan Hendrawan</p>
-                    </div>
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <img class="profil-card" src="../assets/box.png" alt="profil">
-                        <p class="profil-card-name text-oten">Wawan Hendrawan</p>
-                    </div>
-                    <img src="../assets/bayar.png" class="card-img-top" style="padding: 10px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                            of
-                            the
-                            card's content.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- End Desain Terbaru -->
@@ -242,7 +152,7 @@
         <p class="text-h1 text-oten">Kenapa Harus AkuDesain?</p>
         <div class="row" style="margin-bottom: 100px;">
             <div class="col-lg-12">
-                <div class="row text-center  d-flex justify-content-center">
+                <div class="row text-center d-flex justify-content-center">
                     <div class="col-lg">
                         <div class="text-box">
                             <img src="../assets/choose.png" alt="cari" class="icon-md">
@@ -272,10 +182,143 @@
         </div>
         <!-- End Kenapa Harus AkuDesain -->
     </div>
-</section>
 
+    <!-- Testimoni -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row p-5 d-flex justify-content-center">
+                                @foreach ($datareview as $item)
+                                <div class="col-md-4">
+                                    <div class="single-box">
+                                        <div class="img-area">
+                                            <img src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profile">
+                                        </div>
+                                        <div class="img-text">
+                                            <h2>{{$item->name}}</h2>
+                                            <p>{{$item->review}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="row p-5 d-flex justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="single-box">
+                                        <div class="img-area">
+                                            <img src="{{asset('/assets/profile/joko.jpg')}}" alt="profile">
+                                        </div>
+                                        <div class="img-text">
+                                            <h2>Person One</h2>
+                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et velit
+                                                voluptates fuga odio dolores nemo possimus. Possimus nam minima mollitia
+                                                doloremque ut odit fuga porro, laborum exercitationem quaerat saepe aut.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-box">
+                                        <div class="img-area">
+                                            <img src="{{asset('/assets/profile/joko.jpg')}}" alt="profile">
+                                        </div>
+                                        <div class="img-text">
+                                            <h2>Person One</h2>
+                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et velit
+                                                voluptates fuga odio dolores nemo possimus. Possimus nam minima mollitia
+                                                doloremque ut odit fuga porro, laborum exercitationem quaerat saepe aut.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-box">
+                                        <div class="img-area">
+                                            <img src="{{asset('/assets/profile/joko.jpg')}}" alt="profile">
+                                        </div>
+                                        <div class="img-text">
+                                            <h2>Person One</h2>
+                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et velit
+                                                voluptates fuga odio dolores nemo possimus. Possimus nam minima mollitia
+                                                doloremque ut odit fuga porro, laborum exercitationem quaerat saepe aut.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection
 
 @section('footer')
-@yield('footer-desc')
+<div class="row">
+    <div class="col-lg-5">
+        <img src="../assets/logo.png" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
+        <p class="text-white">AkuDesain adalah sebuah platform yang memudahkan anda dalam menemukan
+            jasa
+            desain.
+            Sistem AkuDesain
+            sangat mudah dipakai, cepat dalam respon dan membantu and secara akurat untuk mencari
+            freelancer
+            yang tepat</p>
+    </div>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-5 text-white">
+        <p style=" margin: 30px 0 10px 0; font-weight: bold;">Kontak Kami</p>
+        <ul>
+            <li>
+                <a href="#" style="text-decoration: none; color: white;">
+                    <div class="row">
+                        <img src="{{asset('assets/ig.png')}}" alt="ig"
+                            style="width: 18px; height: 18px; margin: 5px 10px;">
+                        <p>akudesain_id</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#" style="text-decoration: none; color: white;">
+                    <div class="row">
+                        <img src="{{asset('assets/facebook.png')}}" alt="fb" class="mini-icon"
+                            style="width: 12px; height: 18px; margin: 5px 14px;">
+                        <p>AkuDesain</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#" style="text-decoration: none; color: white;">
+                    <div class="row">
+                        <img src="{{asset('assets/mail.png')}}" alt="mail"
+                            style="width: 18px; height: 14px; margin: 5px 10px;">
+                        <p>AkuDesain.official@gmail.com</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#" style="text-decoration: none; color: white;">
+                    <div class="row">
+                        <img src="{{asset('assets/wa.png')}}" alt="wa"
+                            style="width: 16px; height: 14px; margin: 5px 10px;">
+                        <p>+62 87 776 966 876</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
 @endsection

@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Design;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Review;
 
 class DesignController extends Controller
 {
+    public function public()
+    {
+        $datadesign = Design::all();
+        $datareview = Review::all();
+        return view('index', ['datadesign' => $datadesign, 'datareview' => $datareview]);
+    }
     public function index()
     {
         if (auth()->user()->role == 'user') {
@@ -18,6 +26,9 @@ class DesignController extends Controller
 
     public function view_designer()
     {
+        if (auth()->user()->role == 'user') {
+            return redirect('/dashboard');
+        }
         $id = auth()->user()->id;
         $datadesign = Design::where('user_id', $id)->get();
         return view('dashboard-designer.index', compact('datadesign'));

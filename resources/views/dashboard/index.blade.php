@@ -5,49 +5,31 @@
 @section('nav-item')
 
 
-@if (auth()->user()->role === 'user')
-
-<form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Cari Desain" aria-label="Search"
-        style="border-radius: 2px;">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-
-@endif
-
-
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    @if (auth()->user()->role === 'designer')
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Portofolio
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{route('logout')}}">Lihat Designer Populer</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Peringkat</a>
-            </div>
-        </li>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Cari Desain" aria-label="Search"
+                style="border-radius: 2px;">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </ul>
-    @endif
 
     <div class="btn-group">
-        <button class="btn btn-primary btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+        <button class="btn btn-primary" style="border-radius: 18px" type="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mr-3 ml-3 mt-2">
-                    <p class="text-white">{{auth()->user()->name}}</p>
+                    <p class="text-white text_capital"><b>{{auth()->user()->name}}</b></p>
                 </li>
                 <li class="nav-item">
                     <div class="nav-linkdropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{asset('assets/user.png')}}" alt="profil" style="width: 40px; height:40px;">
+                        <img class="br-full" src="{{asset('/assets/profile/'.auth()->user()->avatar)}}" alt="profil"
+                            style="width: 40px; height:40px;">
                     </div>
                 </li>
             </ul>
@@ -69,7 +51,7 @@
 
     <!-- Judul -->
     <section>
-        <p class="text-h1 text-oten" style="text-align: left;">Desain Terbaru</p>
+        <p class="text-h1 text-oten" style="text-align: left; margin-bottom: 10px">Desain Terbaru</p>
     </section>
     <!-- End Judul -->
 
@@ -77,9 +59,14 @@
     <section>
         <div class="col-lg-12 mt-1" style="border-top: solid 3px rgb(0, 102, 255)">
             <div class="row">
-
                 @foreach ($datadesign as $item)
                 <div class="card br-0">
+                    <div class="row mt-0">
+                        <img class="profil-card" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
+                        <p class="profil-card-name text-oten">
+                            {{$item->name}}
+                        </p>
+                    </div>
                     <img src="{{ asset('/assets/'.$item->design) }}" class="card-img-top" alt="design">
                     <div class="card-body">
                         <p class="card-text">{{$item->title}}</p>
@@ -92,10 +79,10 @@
     <!-- End Content -->
 
     <!-- Button Pesan -->
-    <p class="text-h1 text-oten">Pesan Design!</p>
+    <p class="text-h3 text-oten" style="margin-bottom: 15px">Ciptakan Designmu Sekarang!</p>
     <div class="row" style="margin-bottom: 100px;">
         <div class="col-lg-12 d-flex justify-content-center">
-            <div class="btn btn-primary" style="border-radius: 0">Order Desain</div>
+            <div class="btn btn-primary btn-lg" style="border-radius: 0">Order Desain</div>
         </div>
     </div>
     <!-- End Button Pesan -->
@@ -119,6 +106,7 @@
                     {{ csrf_field() }}
                     <input type="text" name="name" class="form-control" value="{{auth()->user()->name}}" hidden>
                     <input type="text" name="user_id" class="form-control" value="{{auth()->user()->id}}" hidden>
+                    <input type="text" name="avatar" class="form-control" value="{{auth()->user()->avatar}}" hidden>
                     <div class="form-group">
                         <textarea class="form-control" name="review" rows="4" style="border-radius: 0"
                             placeholder="Pengerjaan designnya cepat, harga bisa menyesuaikan . . ."></textarea>
@@ -133,8 +121,4 @@
 </div>
 <!-- End Modal Review-->
 
-@endsection
-
-@section('footer')
-@yield('footer-desc')
 @endsection

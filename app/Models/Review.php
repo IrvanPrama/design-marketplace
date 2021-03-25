@@ -13,6 +13,7 @@ class Review extends Model
     protected $fillable = [
         'name',
         'user_id',
-        'review'
+        'review',
+        'avatar'
     ];
 }

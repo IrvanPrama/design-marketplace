@@ -17,10 +17,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
+Route::get('/', [DesignController::class, 'public'], [ReviewController::class, 'review'])->name('public');
+// Route::get('/', [ReviewController::class, 'review'])->name('public-review');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
