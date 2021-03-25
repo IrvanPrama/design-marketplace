@@ -17,8 +17,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [DesignController::class, 'public'], [ReviewController::class, 'review'])->name('public');
-// Route::get('/', [ReviewController::class, 'review'])->name('public-review');
+Route::get('/', [DesignController::class, 'public'])->name('public');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
@@ -35,3 +34,6 @@ Route::post('/signup/account', [UserController::class, 'store']);
 Route::get('/review', [UserController::class, 'review'])->middleware('auth');
 Route::post('/review/create', [UserController::class, 'review_create'])->middleware('auth');
 Route::post('/design/upload', [DesignController::class, 'store']);
+Route::get('/delete-design/{id}', [DesignController::class, 'destroy'])->name('delete-design');
+Route::post('/design/update/{id}', [DesignController::class, 'update'])->name('update-design');
+Route::post('/profile/update', [UserController::class, 'update']);

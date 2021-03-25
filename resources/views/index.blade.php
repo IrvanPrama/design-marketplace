@@ -18,8 +18,8 @@
                 Portofolio
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Desain Logo</a>
+                <a class="dropdown-item" href="#">Desain Baju</a>
             </div>
         </li>
     </ul>
@@ -131,15 +131,19 @@
         <div class="col-lg-12">
             <div class="row d-flex justify-content-center">
                 @foreach ($datadesign as $item)
-                <div class="card br-0">
+                <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);">
                     <div class="row mt-0">
-                        <img class="profil-card" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
-                        <p class="profil-card-name text-oten">
+                        <img class="profil-card mb-0" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
+                        <p class="profil-card-name text-oten mb-0">
                             {{$item->name}}
                         </p>
                     </div>
-                    <img src="{{ asset('/assets/'.$item->design) }}" class="card-img-top" alt="design">
-                    <div class="card-body">
+                    <div class="image"
+                        style="height: 220px; width:220px; background-image: url('{{asset('/assets/'.$item->design)}}');margin-right:6px; margin-left:6px; orientation: center;">
+
+                    </div>
+                    {{-- <img src="{{ asset('/assets/'.$item->design) }}" class="card-img-top" alt="design"> --}}
+                    <div class="card-footer">
                         <p class="card-text">{{$item->title}}</p>
                     </div>
                 </div>
@@ -185,6 +189,7 @@
 
     <!-- Testimoni -->
     <div class="container">
+        <p class="text-h1 text-oten" style="margin-bottom: 10px">Apa Kata Mereka?</p>
         <div class="row">
             <div class="col-md-12">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -213,48 +218,19 @@
 
                         <div class="carousel-item">
                             <div class="row p-5 d-flex justify-content-center">
+                                @foreach ($datareview2 as $item)
                                 <div class="col-md-4">
                                     <div class="single-box">
                                         <div class="img-area">
-                                            <img src="{{asset('/assets/profile/joko.jpg')}}" alt="profile">
+                                            <img src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profile">
                                         </div>
                                         <div class="img-text">
-                                            <h2>Person One</h2>
-                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et velit
-                                                voluptates fuga odio dolores nemo possimus. Possimus nam minima mollitia
-                                                doloremque ut odit fuga porro, laborum exercitationem quaerat saepe aut.
-                                            </p>
+                                            <h2>{{$item->name}}</h2>
+                                            <p>{{$item->review}}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="single-box">
-                                        <div class="img-area">
-                                            <img src="{{asset('/assets/profile/joko.jpg')}}" alt="profile">
-                                        </div>
-                                        <div class="img-text">
-                                            <h2>Person One</h2>
-                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et velit
-                                                voluptates fuga odio dolores nemo possimus. Possimus nam minima mollitia
-                                                doloremque ut odit fuga porro, laborum exercitationem quaerat saepe aut.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="single-box">
-                                        <div class="img-area">
-                                            <img src="{{asset('/assets/profile/joko.jpg')}}" alt="profile">
-                                        </div>
-                                        <div class="img-text">
-                                            <h2>Person One</h2>
-                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et velit
-                                                voluptates fuga odio dolores nemo possimus. Possimus nam minima mollitia
-                                                doloremque ut odit fuga porro, laborum exercitationem quaerat saepe aut.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

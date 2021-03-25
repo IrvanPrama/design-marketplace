@@ -15,10 +15,4 @@ class ReviewController extends Controller
             'review' => $request->review
         ]);
     }
-
-    public function review()
-    {
-        $data = Review::latest()->get();
-        return view('review', compact('data'));
-    }
 }

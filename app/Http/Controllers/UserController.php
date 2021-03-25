@@ -30,7 +30,7 @@ class UserController extends Controller
             'job' => $request->job
         ]);
 
-        return redirect('/dashboard');
+        return redirect('/login');
     }
 
     public function review()
@@ -47,5 +47,28 @@ class UserController extends Controller
         ]);
 
         return redirect('/dashboard');
+    }
+
+    public function update(Request $request)
+    {
+        $id = auth()->user()->id;
+        $change = User::findorfail($id);
+        // $begin = $change->avatar;
+        $avatarname = $request->avatar;
+        $filename = $avatarname->getClientOriginalName();
+
+        $data = [
+            'name' => $request['name'],
+            'avatar' => $filename,
+            // 'avatar' => $begin,
+        ];
+
+        $request->avatar->move(public_path() . '/assets/profile/', $filename);
+        $change->update($data);
+
+        if (auth()->user()->role == 'user') {
+            return redirect('/dashboard');
+        }
+        return redirect('/dashboard/designer');
     }
 }

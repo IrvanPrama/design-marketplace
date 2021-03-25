@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Design;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Review;
 
@@ -12,8 +11,10 @@ class DesignController extends Controller
     public function public()
     {
         $datadesign = Design::all();
-        $datareview = Review::all();
-        return view('index', ['datadesign' => $datadesign, 'datareview' => $datareview]);
+        $row = 1;
+        $datareview = Review::where('row', $row)->get();
+        $datareview2 = Review::where('row', $row + 1)->get();
+        return view('index', ['datadesign' => $datadesign, 'datareview' => $datareview, 'datareview2' => $datareview2]);
     }
     public function index()
     {
@@ -49,5 +50,34 @@ class DesignController extends Controller
         $dataupload->save();
 
         return redirect('/dashboard/designer');
+    }
+
+    public function update(Request $request, $id)
+    {
+        // dd($request->all());
+        $change = Design::findorfail($id);
+        $firstname = $change->design;
+
+        $data = [
+            'title' => $request->title,
+            'design' => $firstname,
+        ];
+
+        $request->design->move(public_path() . '/assets/', $firstname);
+        $change->update($data);
+        return redirect('/dashboard/designer');
+    }
+
+    public function destroy($id)
+    {
+        $delete = Design::findorfail($id);
+
+        $file = public_path('/assets/') . $delete->design;
+        if (file_exists($file)) {
+            @unlink($file);
+        }
+
+        $delete->delete();
+        return back();
     }
 }

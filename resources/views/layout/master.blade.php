@@ -25,7 +25,7 @@
         <section id="header">
             <nav class="navbar navbar-expand-lg navbar-light bg-oten">
                 <div class="container">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{route('public')}}">
                         <img src="{{asset('assets/logo.png')}}" alt="" style="height: 25px; width: 180px;">
                     </a>
 

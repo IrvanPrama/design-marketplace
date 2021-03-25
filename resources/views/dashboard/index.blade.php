@@ -35,7 +35,9 @@
             </ul>
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" data-toggle="modal" data-target="#reviewModal">Buat Review</a>
+            <a class="dropdown-item" type="button" data-toggle="modal" data-target="#profileModal">Edit Profil</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" type="button" data-toggle="modal" data-target="#reviewModal">Buat Review</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{route('logout')}}">Log Out</a>
             <div class="dropdown-divider"></div>
@@ -120,5 +122,37 @@
     </div>
 </div>
 <!-- End Modal Review-->
+
+<!-- Modal Profil-->
+<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content br-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Unggah Foto Profil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/profile/update" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="form-group mb-4">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" name="name" class="form-control" value="{{auth()->user()->name}}">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="name">Unggah Foto Profil</label>
+                        <input type="file" name="avatar" class="form-control" value="{{auth()->user()->avatar}}">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" style="border-radius: 0">Unggah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Profil-->
 
 @endsection

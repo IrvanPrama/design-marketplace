@@ -50,6 +50,7 @@
                     <form action="/signup/account" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="role" value="user">
+                        <input type="hidden" name="avatar" value="default.jpg">
                         <b>
                             <p class="mb-2">Info Akun</p>
                         </b>
