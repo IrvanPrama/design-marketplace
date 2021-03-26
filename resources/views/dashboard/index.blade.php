@@ -144,7 +144,7 @@
                 @foreach ($datadesign as $item)
                 <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
                     <div class="row mt-0">
-                        <img class="profil-card mb-0" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
+                        <img class="profil-card mb-1" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
                         <p class="text-oten" style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
                             {{$item->name}}
                         </p>

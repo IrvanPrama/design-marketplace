@@ -69,10 +69,12 @@
         <div class="col-lg-12">
             <div class="row">
                 @foreach ($datadesign as $item)
-                <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
+                <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;"
+                    data-toggle="modal" data-target="#designModal{{$item->id}}">
                     <div class="row mt-0">
-                        <img class="profil-card mb-0" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
-                        <p class="text-oten" style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
+                        <img class="profil-card mb-1" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
+                        <p class="text-oten text_capital"
+                            style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
                             {{$item->name}}
                         </p>
                     </div>
@@ -168,13 +170,15 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content br-0">
             <div class="modal-header">
+                <h5 class="text-oten text_capital">{{$item->title}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="design-image d-flex justify-content-center">
-                    <img style="height: auto; max-width: 50vw" src="{{asset('/assets/'.$item->design)}}" alt="design">
+                    <img style="max-height: 70vh ; max-width: 50vw" src="{{asset('/assets/design/'.$item->design)}}"
+                        alt="design">
                 </div>
                 <div class="modal-footer">
                     <button data-toggle="modal" data-target="#editDesignModal{{$item->id}}" type="button"

@@ -19,10 +19,10 @@
     color:white !important;
 }
 
-/* .cotainer{
-    padding-left: 10px;
-    padding-right: 10px;
-} */
+.container{
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
 
 .jumbotron{
     background-image: url(../../assets/jumbotron.png);
@@ -193,7 +193,7 @@ li{
 }
 
 .navbar{
-    z-index: 10000;
+    z-index: 1000;
 }
 
 .profile{

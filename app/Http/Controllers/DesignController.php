@@ -35,6 +35,7 @@ class DesignController extends Controller
 
         $dataupload = new Design;
         $dataupload->name = $request->name;
+        $dataupload->avatar = $request->avatar;
         $dataupload->user_id = $request->user_id;
         $dataupload->title = $request->title;
         $dataupload->design = $filename;
