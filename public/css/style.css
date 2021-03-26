@@ -177,21 +177,53 @@ li{
 
 .carousel-indicators{
     left: -10px;
-    top: 400px;
+    top: 262px;
     bottom: 10px;
 }
 
 .carousel-indicators li{
     background: rgba(0, 110, 255, 1) !important;
     border-radius: 100%;
-    width: 25px !important;
-    height: 6px !important;
+    width: 20px !important;
+    height: 0px !important;
 }
 
 .carousel-indicators .active{
     background:rgba(0, 110, 255, 1);
 }
 
+.navbar{
+    z-index: 10000;
+}
 
+.profile{
+    border-radius: 18px;
+    padding: 70px 10px 10px;
+    background-color: #ffff;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile img{
+    top: -60px;
+    position: absolute;
+    left: calc(50% - 50px);
+}
+
+.user{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile h3{
+    font-size: 20px;
+    margin-top: -8px;
+    color: #0084ff;
+}
+
+.text-area{
+    height: 70px;
+}
 
  

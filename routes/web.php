@@ -28,7 +28,7 @@ Route::get('/signup/client', [UserController::class, 'client'])->name('signup-cl
 Route::get('/signup/designer', [UserController::class, 'designer'])->name('signup-designer');
 
 
-Route::get('/dashboard', [DesignController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'user'])->middleware('auth');
 Route::get('/dashboard/designer', [DesignController::class, 'view_designer'])->middleware('auth');
 Route::post('/signup/account', [UserController::class, 'store']);
 Route::get('/review', [UserController::class, 'review'])->middleware('auth');

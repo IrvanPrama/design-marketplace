@@ -23,6 +23,7 @@ class UserController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'avatar' => $request->avatar,
             'role' => $request->role,
             'password' => bcrypt($request->password),
             'username' => $request->username,
@@ -42,6 +43,7 @@ class UserController extends Controller
     {
         Review::create([
             'name' => $request->name,
+            'avatar' => $request->avatar,
             'user_id' => $request->user_id,
             'review' => $request->review
         ]);
@@ -53,14 +55,12 @@ class UserController extends Controller
     {
         $id = auth()->user()->id;
         $change = User::findorfail($id);
-        // $begin = $change->avatar;
         $avatarname = $request->avatar;
         $filename = $avatarname->getClientOriginalName();
 
         $data = [
             'name' => $request['name'],
             'avatar' => $filename,
-            // 'avatar' => $begin,
         ];
 
         $request->avatar->move(public_path() . '/assets/profile/', $filename);

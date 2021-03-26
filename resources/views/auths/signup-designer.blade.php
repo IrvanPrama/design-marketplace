@@ -52,7 +52,7 @@
                             Sebagai
                             Desainer (Gratis)</p>
                     </b>
-                    <form action="/signup/designer" method="post">
+                    <form action="/signup/account" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="role" value="designer">
                         <input type="hidden" name="avatar" value="default.jpg">

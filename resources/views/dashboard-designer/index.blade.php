@@ -65,19 +65,26 @@
 
     <!-- Content -->
     <section>
-        <div class="col-lg-12 mt-1" style="border-top: solid 3px rgb(0, 102, 255)">
+        <!-- Desain Terbaru -->
+        <div class="col-lg-12">
             <div class="row">
-
                 @foreach ($datadesign as $item)
-                <div class="card br-0" data-toggle="modal" data-target="#designModal{{$item->id}}">
-                    <img src="{{ asset('/assets/'.$item->design) }}" class="card-img-top" alt="design">
-                    <div class="card-body">
-                        <p class="card-text">{{$item->title}}</p>
+                <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
+                    <div class="row mt-0">
+                        <img class="profil-card mb-0" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
+                        <p class="text-oten" style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
+                            {{$item->name}}
+                        </p>
                     </div>
+                    <div class="image"
+                        style="height: 220px; width:220px; background-image: url('{{asset('/assets/design/'.$item->design)}}'); background-repeat: no-repeat; background-size: cover; background-position: center; margin-right: 6px; margin-left: 6px;">
+                    </div>
+                    <p class="text-h3 text_capital text-oten" style="margin:5px 0;">{{$item->title}}</p>
                 </div>
                 @endforeach
             </div>
         </div>
+        <!-- End Desain Terbaru -->
     </section>
     <!-- End Content -->
 

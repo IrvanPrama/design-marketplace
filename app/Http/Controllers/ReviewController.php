@@ -11,6 +11,7 @@ class ReviewController extends Controller
     {
         Review::create([
             'name' => $request->name,
+            'avatar' => $request->avatar,
             'user_id' => $request->user_id,
             'review' => $request->review
         ]);

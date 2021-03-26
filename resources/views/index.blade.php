@@ -13,14 +13,9 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link text-white" href="#">
                 Portofolio
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Desain Logo</a>
-                <a class="dropdown-item" href="#">Desain Baju</a>
-            </div>
         </li>
     </ul>
     <ul class="navbar-nav ml-auto">
@@ -127,27 +122,26 @@
 
     <div class="container">
         <!-- Desain Terbaru -->
-        <p class="text-h1 text-oten" style="text-align: left;">Desain Terbaru</p>
+        <p class="text-h1 text-oten mb-0" style="text-align: left;">Desain Terbaru</p>
         <div class="col-lg-12">
             <div class="row d-flex justify-content-center">
                 @foreach ($datadesign as $item)
-                <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);">
+                <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
                     <div class="row mt-0">
                         <img class="profil-card mb-0" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
-                        <p class="profil-card-name text-oten mb-0">
+                        <p class="text-oten" style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
                             {{$item->name}}
                         </p>
                     </div>
                     <div class="image"
-                        style="height: 220px; width:220px; background-image: url('{{asset('/assets/'.$item->design)}}');margin-right:6px; margin-left:6px; orientation: center;">
-
+                        style="height: 220px; width:220px; background-image: url('{{asset('/assets/design/'.$item->design)}}'); background-repeat: no-repeat; background-size: cover; background-position: center; margin-right: 6px; margin-left: 6px;">
                     </div>
-                    {{-- <img src="{{ asset('/assets/'.$item->design) }}" class="card-img-top" alt="design"> --}}
-                    <div class="card-footer">
-                        <p class="card-text">{{$item->title}}</p>
-                    </div>
+                    <p class="text-h3 text_capital text-oten" style="margin:5px 0;">{{$item->title}}</p>
                 </div>
                 @endforeach
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <a href="" class="btn btn-success">Lihat Desain Lainnya</a>
             </div>
         </div>
         <!-- End Desain Terbaru -->
@@ -190,7 +184,7 @@
     <!-- Testimoni -->
     <div class="container">
         <p class="text-h1 text-oten" style="margin-bottom: 10px">Apa Kata Mereka?</p>
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-md-12">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -199,16 +193,15 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <div class="row p-5 d-flex justify-content-center">
+                            <div class="row p-5 d-flex justify-content-center" style="padding-top: 5rem !important;">
                                 @foreach ($datareview as $item)
-                                <div class="col-md-4">
-                                    <div class="single-box">
-                                        <div class="img-area">
-                                            <img src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profile">
-                                        </div>
-                                        <div class="img-text">
-                                            <h2>{{$item->name}}</h2>
-                                            <p>{{$item->review}}</p>
+                                <div class="col-md-4 text-center">
+                                    <div class="profile">
+                                        <img src="{{asset('/assets/profile/'.$item->avatar)}}" class="user"
+                                            alt="profile">
+                                        <h3 class="text_capital">{{$item->name}}</h3>
+                                        <div class="text-area">
+                                            <p class="text-review">"{{$item->review}}"</p>
                                         </div>
                                     </div>
                                 </div>
@@ -217,16 +210,15 @@
                         </div>
 
                         <div class="carousel-item">
-                            <div class="row p-5 d-flex justify-content-center">
+                            <div class="row p-5 d-flex justify-content-center" style="padding-top: 5rem !important;">
                                 @foreach ($datareview2 as $item)
-                                <div class="col-md-4">
-                                    <div class="single-box">
-                                        <div class="img-area">
-                                            <img src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profile">
-                                        </div>
-                                        <div class="img-text">
-                                            <h2>{{$item->name}}</h2>
-                                            <p>{{$item->review}}</p>
+                                <div class="col-md-4 text-center">
+                                    <div class="profile">
+                                        <img src="{{asset('/assets/profile/'.$item->avatar)}}" class="user"
+                                            alt="profile">
+                                        <h3 class="text_capital">{{$item->name}}</h3>
+                                        <div class="text-area">
+                                            <p class="text-review">"{{$item->review}}"</p>
                                         </div>
                                     </div>
                                 </div>
@@ -237,7 +229,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>
 @endsection
 

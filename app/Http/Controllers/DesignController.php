@@ -16,14 +16,7 @@ class DesignController extends Controller
         $datareview2 = Review::where('row', $row + 1)->get();
         return view('index', ['datadesign' => $datadesign, 'datareview' => $datareview, 'datareview2' => $datareview2]);
     }
-    public function index()
-    {
-        if (auth()->user()->role == 'user') {
-            $datadesign = Design::latest()->get();
-            return view('dashboard.index', compact('datadesign'));
-        }
-        return redirect('/dashboard/designer');
-    }
+
 
     public function view_designer()
     {
@@ -46,7 +39,7 @@ class DesignController extends Controller
         $dataupload->title = $request->title;
         $dataupload->design = $filename;
 
-        $data->move(public_path() . '/assets', $filename);
+        $data->move(public_path() . '/assets/design/', $filename);
         $dataupload->save();
 
         return redirect('/dashboard/designer');
@@ -54,7 +47,6 @@ class DesignController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd($request->all());
         $change = Design::findorfail($id);
         $firstname = $change->design;
 
@@ -63,7 +55,7 @@ class DesignController extends Controller
             'design' => $firstname,
         ];
 
-        $request->design->move(public_path() . '/assets/', $firstname);
+        $request->design->move(public_path() . '/assets/design/', $firstname);
         $change->update($data);
         return redirect('/dashboard/designer');
     }
@@ -72,7 +64,7 @@ class DesignController extends Controller
     {
         $delete = Design::findorfail($id);
 
-        $file = public_path('/assets/') . $delete->design;
+        $file = public_path('/assets/design/') . $delete->design;
         if (file_exists($file)) {
             @unlink($file);
         }
