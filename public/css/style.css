@@ -226,4 +226,6 @@ li{
     height: 70px;
 }
 
- 
+.spc-panel p{
+    margin-bottom: 0 !important;
+} 

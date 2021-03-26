@@ -4,7 +4,8 @@
 <form class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" type="search" placeholder="Cari Desain" aria-label="Search"
         style="border-radius: 2px;">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <button class="btn" style="color: rgba(128, 128, 128, 0.671); margin-left:-50px;" type="submit"><i
+            class="fa fa-search"></i></button>
 </form>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,25 +54,43 @@
 <!-- Bar Panel -->
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-10 bar-panel">
+        <div class="col-lg-12 bar-panel">
             <div class="row">
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-2.png')}}" alt="image1" class="panel-img">
+                    <p><b>Logo</b></p>
                 </div>
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-3.png')}}" alt="image1" class="panel-img">
+                    <p><b>Kartu Nama</b></p>
                 </div>
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-4.png')}}" alt="image1" class="panel-img">
+                    <p><b>Brosur</b></p>
                 </div>
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-5.png')}}" alt="image1" class="panel-img">
+                    <p><b>Banner</b></p>
                 </div>
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-6.png')}}" alt="image1" class="panel-img">
+                    <p><b>Feed IG</b></p>
                 </div>
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-7.png')}}" alt="image1" class="panel-img">
+                    <p><b>CV</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-8.png')}}" alt="image1" class="panel-img">
+                    <p><b>Kaos</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-9.png')}}" alt="image1" class="panel-img">
+                    <p><b>Ilustrasi</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-10.png')}}" alt="image1" class="panel-img">
+                    <p><b>Jasa Lainnya</b></p>
                 </div>
             </div>
         </div>
