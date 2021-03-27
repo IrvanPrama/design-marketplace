@@ -17,6 +17,17 @@ class DesignController extends Controller
         return view('index', ['datadesign' => $datadesign, 'datareview' => $datareview, 'datareview2' => $datareview2]);
     }
 
+    function view_design()
+    {
+        $datadesign = Design::latest()->get();
+        return view('fragment.design', compact('datadesign'));
+    }
+
+    function dashboard_design()
+    {
+        $datadesign = Design::latest()->get();
+        return view('fragment.dashboard-design', compact('datadesign'));
+    }
 
     public function view_designer()
     {

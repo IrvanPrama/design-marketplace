@@ -1,5 +1,7 @@
 @extends('layout.master')
 
+@section('name', 'Home')
+
 @section('nav-item')
 <form class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" type="search" placeholder="Cari Desain" aria-label="Search"
@@ -14,7 +16,7 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-            <a class="nav-link text-white" href="#">
+            <a class="nav-link text-white" href="{{route('design')}}">
                 Portofolio
             </a>
         </li>
@@ -147,7 +149,7 @@
                 @foreach ($datadesign as $item)
                 <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
                     <div class="row mt-0">
-                        <img class="profil-card mb-0" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
+                        <img class="profil-card mb-1" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
                         <p class="text-oten" style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
                             {{$item->name}}
                         </p>
@@ -160,7 +162,7 @@
                 @endforeach
             </div>
             <div class="d-flex justify-content-center mt-4">
-                <a href="" class="btn btn-success">Lihat Desain Lainnya</a>
+                <a href="{{route('design')}}" class="btn btn-success">Lihat Desain Lainnya</a>
             </div>
         </div>
         <!-- End Desain Terbaru -->

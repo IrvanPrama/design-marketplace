@@ -30,6 +30,8 @@ Route::get('/signup/designer', [UserController::class, 'designer'])->name('signu
 
 Route::get('/dashboard', [DashboardController::class, 'user'])->middleware('auth');
 Route::get('/dashboard/designer', [DesignController::class, 'view_designer'])->middleware('auth');
+Route::get('/design', [DesignController::class, 'view_design'])->name('design');
+Route::get('/dashboard/design', [DesignController::class, 'dashboard_design'])->name('dashboard-design')->middleware('auth');
 Route::post('/signup/account', [UserController::class, 'store']);
 Route::get('/review', [UserController::class, 'review'])->middleware('auth');
 Route::post('/review/create', [UserController::class, 'review_create'])->middleware('auth');

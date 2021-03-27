@@ -8,14 +8,11 @@
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Cari Desain" aria-label="Search"
                 style="border-radius: 2px;">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn" style="color: rgba(128, 128, 128, 0.671); margin-left:-50px;" type="submit"><i
+                    class="fa fa-search"></i></button>
         </form>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <li class="nav-item dropdown">
-            <a class="nav-link text-white" href="#">
+            <a class="nav-link text-white" href="{{route('dashboard-design')}}">
                 Portofolio
             </a>
         </li>
@@ -157,7 +154,7 @@
                 @endforeach
             </div>
             <div class="d-flex justify-content-center mt-4">
-                <a href="" class="btn btn-success">Lihat Desain Lainnya</a>
+                <a href="{{route('dashboard-design')}}" class="btn btn-success">Lihat Desain Lainnya</a>
             </div>
         </div>
         <!-- End Desain Terbaru -->
@@ -245,7 +242,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 
