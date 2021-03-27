@@ -19,8 +19,8 @@
     </ul>
 
     <div class="btn-group">
-        <button class="btn btn-primary" style="border-radius: 18px" type="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+        <button class="btn" style="border-radius: 18px" type="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mr-3 ml-3 mt-2">
                     <p class="text-white text_capital"><b>{{auth()->user()->name}}</b></p>
@@ -66,25 +66,43 @@
 <!-- Bar Panel -->
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-10 bar-panel">
+        <div class="col-lg-12 bar-panel">
             <div class="row">
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-2.png')}}" alt="image1" class="panel-img">
+                    <p><b>Logo</b></p>
                 </div>
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-3.png')}}" alt="image1" class="panel-img">
+                    <p><b>Kartu Nama</b></p>
                 </div>
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-4.png')}}" alt="image1" class="panel-img">
+                    <p><b>Brosur</b></p>
                 </div>
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-5.png')}}" alt="image1" class="panel-img">
+                    <p><b>Banner</b></p>
                 </div>
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-6.png')}}" alt="image1" class="panel-img">
+                    <p><b>Feed IG</b></p>
                 </div>
-                <div class="col-lg">
-                    <img src="../assets/box.png" alt="image1" class="panel-img">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-7.png')}}" alt="image1" class="panel-img">
+                    <p><b>CV</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-8.png')}}" alt="image1" class="panel-img">
+                    <p><b>Kaos</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-9.png')}}" alt="image1" class="panel-img">
+                    <p><b>Ilustrasi</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-10.png')}}" alt="image1" class="panel-img">
+                    <p><b>Jasa Lainnya</b></p>
                 </div>
             </div>
         </div>
@@ -142,7 +160,8 @@
                 <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
                     <div class="row mt-0">
                         <img class="profil-card mb-1" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
-                        <p class="text-oten" style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
+                        <p class="text-oten text_capital"
+                            style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
                             {{$item->name}}
                         </p>
                     </div>

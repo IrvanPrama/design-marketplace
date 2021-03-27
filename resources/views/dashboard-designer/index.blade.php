@@ -21,7 +21,7 @@
     </ul>
 
     <div class="btn-group">
-        <button class="btn btn-primary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        <button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
             style="border-radius:18px;">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mr-3 ml-3 pt-2">

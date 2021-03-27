@@ -17,15 +17,23 @@ class DesignController extends Controller
         return view('index', ['datadesign' => $datadesign, 'datareview' => $datareview, 'datareview2' => $datareview2]);
     }
 
-    function view_design()
+    function view_design(Request $request)
     {
-        $datadesign = Design::latest()->get();
+        if ($request->has('category')) {
+            $datadesign = Design::where('title', 'LIKE', '%' . $request->category . '%')->get();
+        } else {
+            $datadesign = Design::latest()->get();
+        }
         return view('fragment.design', compact('datadesign'));
     }
 
-    function dashboard_design()
+    function dashboard_design(Request $request)
     {
-        $datadesign = Design::latest()->get();
+        if ($request->has('category')) {
+            $datadesign = Design::where('title', 'LIKE', '%' . $request->category . '%')->get();
+        } else {
+            $datadesign = Design::latest()->get();
+        }
         return view('fragment.dashboard-design', compact('datadesign'));
     }
 

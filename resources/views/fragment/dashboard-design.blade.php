@@ -15,17 +15,12 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <li class="nav-item dropdown">
-            <a class="nav-link text-white" href="#">
-                Portofolio
-            </a>
-        </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
         <div class="btn-group">
-            <button class="btn btn-primary" style="border-radius: 18px" type="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+            <button class="btn" style="border-radius: 18px" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-3 ml-3 mt-2">
                         <p class="text-white text_capital"><b>{{auth()->user()->name}}</b></p>
@@ -61,6 +56,24 @@
         macam
         pilihan desain<br>yang sesuai dengan kebutuhan anda</h3>
     <div class="col-lg-12">
+        <div class="row">
+            <div class="dropdown">
+                <div class="btn btn-primary category mr-2 dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Katagori</div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/dashboard/design?category=logo">Logo</a>
+                    <a class="dropdown-item" href="/dashboard/design?category=kartu nama">Kartu Nama</a>
+                    <a class="dropdown-item" href="/dashboard/design?category=brosur">Brosur</a>
+                    <a class="dropdown-item" href="/dashboard/design?category=banner">Banner</a>
+                    <a class="dropdown-item" href="/dashboard/design?category=feed ig">Feed IG</a>
+                    <a class="dropdown-item" href="/dashboard/design?category=cv">Curriculum Vitae (CV)</a>
+                    <a class="dropdown-item" href="/dashboard/design?category=kaos">Kaos</a>
+                    <a class="dropdown-item" href="/dashboard/design?category=ilustrasi">Ilustrasi</a>
+                    <a class="dropdown-item" href="/dashboard/design?category=jasa">Jasa Lainnya</a>
+                </div>
+            </div>
+            <a class="btn btn-primary latest dropdown-toggle" href="/dashboard/design" type="button">Terbaru</a>
+        </div>
         <div class="row d-flex justify-content-center">
             @foreach ($datadesign as $item)
             <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
