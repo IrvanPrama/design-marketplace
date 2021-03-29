@@ -61,7 +61,8 @@
         </div>
         <div class="row d-flex justify-content-center">
             @foreach ($datadesign as $item)
-            <div class="card br-0" style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
+            <a href="/detail/{{$item->id}}" class="card br-0"
+                style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
                 <div class="row mt-0">
                     <img class="profil-card mb-1" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
                     <p class="text-oten text_capital"
@@ -70,10 +71,10 @@
                     </p>
                 </div>
                 <div class="image"
-                    style="height: 220px; width:220px; background-image: url('{{asset('/assets/design/'.$item->design)}}'); background-repeat: no-repeat; background-size: cover; background-position: center; margin-right: 6px; margin-left: 6px;">
+                    style="height: 220px; width:220px; background-image: url('{{asset('/assets/design/'.$item->design1)}}'); background-repeat: no-repeat; background-size: cover; background-position: center; margin-right: 6px; margin-left: 6px;">
                 </div>
                 <p class="text-h3 text_capital text-oten" style="margin:5px 0;">{{$item->title}}</p>
-            </div>
+            </a>
             @endforeach
         </div>
         <div class="d-flex justify-content-center mt-4">

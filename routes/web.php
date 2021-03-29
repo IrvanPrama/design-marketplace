@@ -18,6 +18,8 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [DesignController::class, 'public'])->name('public');
+Route::get('/dashboard/detail', [DesignController::class, 'product_detail'])->name('product-detail-dashboard');
+Route::get('/detail/{id}', [DesignController::class, 'product_detail']);
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');

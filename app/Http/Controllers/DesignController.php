@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Design;
 use Illuminate\Http\Request;
 use App\Models\Review;
+use App\Models\User;
 
 class DesignController extends Controller
 {
@@ -15,6 +16,16 @@ class DesignController extends Controller
         $datareview = Review::where('row', $row)->get();
         $datareview2 = Review::where('row', $row + 1)->get();
         return view('index', ['datadesign' => $datadesign, 'datareview' => $datareview, 'datareview2' => $datareview2]);
+    }
+
+    public function product_detail($id)
+    {
+        $dt = Design::where('id', $id)->get();
+        $dtf = Design::find($id);
+        $user_id = $dtf->user_id;
+        $user = User::where('id', $user_id)->get();
+        // dd($dt->all());
+        return view('public-detail-product', ['dt' => $dt, 'user' => $user]);
     }
 
     function view_design(Request $request)
