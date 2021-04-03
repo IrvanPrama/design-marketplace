@@ -13,7 +13,10 @@ class Design extends Model
         'name',
         'user_id',
         'title',
-        'design',
+        'description',
+        'design1',
+        'design2',
+        'design3',
         'avatar'
     ];
 }

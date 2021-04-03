@@ -13,7 +13,13 @@
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
 </button>
+<li class="nav-item">
+    <a class="nav-link text-white dropdown-toggle" href="{{route('design')}}">
+        Portofolio
+    </a>
+</li>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
     <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
             <a class="nav-link text-white" href="{{route('signup')}}">Daftar</a>
@@ -108,12 +114,15 @@
                                 hasil desain / dummy (revisi jika diperlukan)
                                 <br>4. Saya kirim hasil akhir desain seteah di setujui
                             </p>
+
                         </div>
                         <span><i class="far fa-clock" style="font-size: 20px"></i></span> Lama Pengerjaan: 3 Hari</p>
                         <div class="row">
 
-                            <div class="btn btn-success mr-auto ml-auto" style="width: 35%">Pesan Sekarang</div>
-                            <div class="btn btn-success mr-auto ml-auto" style="width: 35%">Chat Designer</div>
+                            <a href="/login" class="btn btn-success mr-auto ml-auto" style="width: 35%">Pesan
+                                Sekarang</a>
+                            <a href="/login" class="btn btn-success mr-auto ml-auto" style="width: 35%">Chat
+                                Designer</a>
 
                         </div>
                     </div>

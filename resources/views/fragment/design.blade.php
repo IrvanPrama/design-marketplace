@@ -78,7 +78,7 @@
             @endforeach
         </div>
         <div class="d-flex justify-content-center mt-4">
-            <a href="" class="btn btn-success">Pesan Sekarang</a>
+            <a href="/login" class="btn btn-success">Pesan Sekarang</a>
         </div>
     </div>
     <!-- End Desain Terbaru -->

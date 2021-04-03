@@ -13,9 +13,15 @@ class UserController extends Controller
         return view('auths.signup-designer');
     }
 
+
     public function client()
     {
         return view('auths.signup-client');
+    }
+
+    public function admin()
+    {
+        return view('auths.signup-admin');
     }
 
     public function store(Request $request)
@@ -54,17 +60,27 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $id = auth()->user()->id;
-        $change = User::findorfail($id);
-        $avatarname = $request->avatar;
-        $filename = $avatarname->getClientOriginalName();
+        if ($request->avatar === 0) {
+            $change = User::findorfail($id);
 
-        $data = [
-            'name' => $request['name'],
-            'avatar' => $filename,
-        ];
+            $data = [
+                'name' => $request['name'],
+            ];
 
-        $request->avatar->move(public_path() . '/assets/profile/', $filename);
-        $change->update($data);
+            $change->update($data);
+        } else {
+            $change = User::findorfail($id);
+            $avatarname = $request->avatar;
+            $filename = $avatarname->getClientOriginalName();
+
+            $data = [
+                'name' => $request['name'],
+                'avatar' => $filename,
+            ];
+
+            $request->avatar->move(public_path() . '/assets/profile/', $filename);
+            $change->update($data);
+        }
 
         if (auth()->user()->role == 'user') {
             return redirect('/dashboard');
