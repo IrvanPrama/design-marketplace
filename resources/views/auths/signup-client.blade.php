@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('name', 'Client Signup')
+@section('name', 'Client Signup | Akudesain')
 @section('content')
 <!-- Daftar Button -->
 <div class="container" style="margin-top: 100px; margin-bottom: 100px;">
@@ -50,41 +50,69 @@
                     <form action="/signup/account" method="post">
                         {{ csrf_field() }}
                         <input type="hidden" name="role" value="user">
-                        <input type="hidden" name="avatar" value="default.jpg">
                         <b>
                             <p class="mb-2">Info Akun</p>
                         </b>
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Nama Lengkap">
+                        <div class="form-group mb-4">
+                            <input type="text" name="name" value="{{ old('name') }}" class="form-control  @error('name')
+                            is-invalid
+                            @enderror" id="name" placeholder="Nama Lengkap">
+                            @error('deadline')
+                            <span class="text-white has-error">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="text" name="username" class="form-control" id="username"
-                                placeholder="Username">
+                            <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email')
+                            is-invalid
+                            @enderror" id="email" placeholder="Email" autocomplete="off" aria-describedby="emailHelp">
+                            @error('email')
+                            <span class="text-white has-error">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" class="form-control" id="password"
-                                placeholder="Password">
+                            <input type="password" name="password" value="{{ old('password') }}" class="form-control @error('password')
+                            is-invalid
+                            @enderror" id="password" placeholder="Password" autocomplete="off">
+                            @error('password')
+                            <span class="text-white has-error">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group mb-4">
-                            <input type="password" name="password" class="form-control" id="password2"
-                                placeholder="Confirm Password">
+                            <input type="password" name="password2" value="{{ old('password2') }}" class="form-control @error('password2')
+                            is-invalid
+                            @enderror" id="password2" placeholder="Confirm Password">
+                            @error('password2')
+                            <span class="text-white has-error">{{ $message }}</span>
+                            @enderror
                         </div>
                         <b>
                             <p class="mb-2">Info Kontak</p>
                         </b>
                         <div class="form-group">
-                            <input type="text" name="industri" class="form-control" id="industri"
-                                placeholder="Industri">
+                            <input type="text" name="job" value="{{ old('job') }}" class="form-control @error('job')
+                            is-invalid
+                            @enderror" id="job" placeholder="Pekerjaan">
+                            @error('job')
+                            <span class="text-white has-error">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="integer" name="no_hp" class="form-control" id="nohp"
-                                placeholder="No Handphone">
+                            <input type="integer" id="now_hp" value="{{ old('no_hp') }}" name="no_hp" class="form-control @error('no_hp')
+                            is-invalid
+                            @enderror" id="now_hp" placeholder="No Handphone">
+                            @error('no_hp')
+                            <span class="text-white has-error">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="email" aria-describedby="emailHelp" name="email" class="form-control"
-                                id="email" placeholder="Email" aria-describedby="emailHelp">
+                            <input type="text" name="username" value="{{ old('username') }}" class="form-control @error('username')
+                            is-invalid
+                            @enderror" id="username" placeholder="username">
+                            @error('username')
+                            <span class="text-white has-error">{{ $message }}</span>
+                            @enderror
                         </div>
-                        <button type="submit" class="btn btn-block btn-success">Daftar</button>
+                        <button onclick="myFunction()" type="submit" class="btn btn-block btn-success">Daftar</button>
                     </form>
                 </div>
             </div>

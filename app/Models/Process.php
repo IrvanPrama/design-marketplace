@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Process extends Model
 {
     use HasFactory;
-
+    protected $table = 'process';
     protected $fillable = [
         'user_id',
         'title_design',
@@ -17,10 +17,7 @@ class Order extends Model
         'designer_id',
         'design_id',
         'avatar',
-        'no_hp',
         'description',
-        'example_img',
-        'category',
         'budget',
         'deadline',
     ];

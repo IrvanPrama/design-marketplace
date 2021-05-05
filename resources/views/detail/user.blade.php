@@ -1,53 +1,5 @@
-@extends('layout.master')
+@extends('dashboard.master-user')
 @section('name','Detail Produk')
-
-@section('nav-item')
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Cari Desain" aria-label="Search"
-                style="border-radius: 2px;">
-            <button class="btn" style="color: rgba(128, 128, 128, 0.671); margin-left:-50px;" type="submit"><i
-                    class="fa fa-search"></i></button>
-        </form>
-        <li class="nav-item dropdown">
-            <a class="nav-link text-white" href="{{route('design')}}">
-                Portofolio
-            </a>
-        </li>
-    </ul>
-
-    <div class="btn-group">
-        <button class="btn" style="border-radius: 18px" type="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-3 ml-3 mt-2">
-                    <p class="text-white text_capital"><b>{{auth()->user()->name}}</b></p>
-                </li>
-                <li class="nav-item">
-                    <div class="nav-linkdropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            class="br-full" src="{{asset('/assets/profile/'.auth()->user()->avatar)}}" alt="profil"
-                            style="width: 40px; height:40px;">
-                    </div>
-                </li>
-            </ul>
-        </button>
-        <div class="dropdown-menu">
-            <a href="{{route('dashboard')}}" class="dropdown-item" type="button">Dashboard</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" type="button" data-toggle="modal" data-target="#profileModal">Edit Profil</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{route('logout')}}">Log Out</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" type="button" data-toggle="modal" data-target="#reviewModal">Buat Review</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Level <b>{{auth()->user()->role}}</b></a>
-        </div>
-    </div>
-</div>
-@endsection
 
 @section('content')
 <div class="container">
@@ -99,8 +51,11 @@
         <div class="col-lg-7">
             @foreach ($user as $item)
             <div class="row ml-4">
-                <img src="{{asset('/assets/profile/'.$item->avatar)}}" class="br-full" style="height: 60px; width:60px"
-                    alt="">
+                <img src=" @if(!is_null($item->avatar))
+                {{asset('/assets/profile/'.$item->avatar)}}
+                @else
+                {{asset('/assets/profile/default.jpg')}}
+                @endif" class="br-full" style="height: 60px; width:60px" alt="">
                 <div class="row">
                     <div class="ml-4">
                         <h5 class="uppercase text-oten mb-1 text_capital"><b>{{$item->name}}</b></h5>
@@ -128,7 +83,13 @@
                                 <br>4. Saya kirim hasil akhir desain seteah di setujui
                             </p>
                         </div>
-                        <span><i class="far fa-clock" style="font-size: 20px"></i></span> Lama Pengerjaan: 3 Hari</p>
+                        <div class="row">
+                            <p>
+                                <span><i class="far fa-clock" style="font-size: 20px"></i></span> Lama Pengerjaan: 3
+                                Hari
+                            </p>
+                            <p><span><i class="far fa-money" style="font-size: 20px"></i></span> Rp.50.000</p>
+                        </div>
                         <div class="row">
 
                             <a href="/dashboard/form/order/{{$item->id}}" class="btn btn-success mr-auto ml-auto"

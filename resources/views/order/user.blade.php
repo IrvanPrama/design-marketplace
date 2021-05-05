@@ -1,6 +1,6 @@
-@extends('layout.master')
+@extends('dashboard.master-user')
 
-@section('name', 'Order')
+@section('name', 'User Order | Akudesain')
 
 @section('nav-item')
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -33,8 +33,15 @@
                     <li class="nav-item">
                         <div class="nav-linkdropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="br-full" src="{{asset('/assets/profile/'.auth()->user()->avatar)}}" alt="profil"
-                                style="width: 40px; height:40px;">
+                            <img class="br-full" src="
+                            
+                        @if(!is_null(auth()->user()->avatar))
+                        {{asset('/assets/profile/'.auth()->user()->avatar)}}
+                        @else
+                        {{asset('/assets/profile/default.jpg')}}
+                        @endif
+                            
+                            " alt="profil" style="width: 40px; height:40px;">
                         </div>
                     </li>
                 </ul>
@@ -82,31 +89,34 @@
                         <input type="hidden" name="name" value="{{auth()->user()->name}}">
                         <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                         <input type="hidden" name="designer_id" value="{{$item->user_id}}">
+                        <input type="hidden" name="title_design" value="{{$item->title}}">
+                        <input type="hidden" name="design_id" value="{{$item->id}}">
                         <div class="row">
                             <div class="col-sm-9">
-                                <textarea name="description" type="text" class="form-control border-grey"
-                                    style="height:100%;" placeholder="Deskripsikan dengan singkat pesanan anda"
-                                    rows="4"></textarea>
+                                <div class="form-group">
+                                    <textarea name="description" type="text"
+                                        class="form-control border-grey @error('description') is-invalid @enderror"
+                                        style="height:100%;" placeholder="Deskripsikan dengan singkat pesanan anda"
+                                        rows="4">{{$item->description}}</textarea>
+                                    @error('description')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    @error('example_img')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="col-sm-3" style="padding-left: 0;">
-                                <div type="button" class="box py-2" style="border-radius: 8px; border: 2px solid grey;">
-                                    <div class="row"><i class="fas fa-plus-circle mx-auto color-oten"></i></div>
-                                    <div class="row mx-auto">
-                                        <p class="text-oten p-1 text-center mx-auto"
-                                            style="font-size: 10px; width:80%;">
-                                            <b>Tambahkan gambar
-                                                contoh
-                                                pesanan</b>
-                                        </p>
-                                        <input type="file" name="example_img">
-                                    </div>
+                                <div class="box" style="border-radius: 8px; border: 2px solid grey;">
+                                    <img src="{{asset('assets/design/'.$item->design1)}}" class="img-fluid" alt="">
                                 </div>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-12">
-                                <select name="category" class="form-control border-grey" style="width: 100%"
-                                    id="exampleFormControlSelect1">
+                                <select name="category"
+                                    class="form-control border-grey  @error('category') is-invalid @enderror"
+                                    style="width: 100%" id="exampleFormControlSelect1">
                                     <option selected disabled>Kategori</option>
                                     <option value="kaos">Kaos</option>
                                     <option value="logo">Logo</option>
@@ -118,30 +128,45 @@
                                     <option value="feed ig">Feed IG</option>
                                     <option value="jasa lainnya">Jasa Lainnya</option>
                                 </select>
+                                @error('category')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col pr-1"><input class="form-control border-grey" style="width: 100%"
-                                    type="text" name="budget" placeholder="Anggaran (Rp)"></div>
-                            <div class="col pl-1"><input class="form-control border-grey" style="width: 100%"
-                                    type="text" name="deadline" placeholder="Tanggal Deadline"></div>
+                            <div class="col pr-1">
+                                <input
+                                    class="form-control border-grey input-currency  @error('budget') is-invalid @enderror"
+                                    type-currency="IDR" style="width: 100%" type="text" name="budget"
+                                    placeholder="Anggaran (Rp)" autocomplete="off">
+                                @error('budget')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="col pl-1"><input
+                                    class="form-control border-grey  @error('deadline') is-invalid @enderror"
+                                    style="width: 100%" type="date" name="deadline" placeholder="Tanggal Deadline">
+                                @error('deadline')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror</div>
                         </div>
                         <div class="col mt-3 mb-3" style="border-bottom: 1px solid rgb(131, 131, 131)"></div>
                         <div class="row mt-2">
                             <div class="col">
                                 <input class="form-control border-grey" type="text" name="email" placeholder="Email"
-                                    value="{{auth()->user()->email}}">
+                                    value="{{auth()->user()->email}}" disabled>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-2 pr-0">
-                                <select class="form-control border-grey p-1" type="text" placeholder="Email">
+                                <select class="form-control border-grey p-1" type="text" placeholder="No. Hp">
                                     <option value="0" selected>+62</option>
                                 </select>
                             </div>
                             <div class="col-sm-10 pl-1">
                                 <input class="form-control border-grey" type="text" name="no_hp"
-                                    placeholder="No. Handphone" value="{{auth()->user()->no_hp}}">
+                                    placeholder="No. Handphone / WA" value="{{auth()->user()->no_hp}}" disabled>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success btn-block br-st mt-2 mb-2">Kirim Detail Pesanan
@@ -279,4 +304,27 @@
     </div>
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {
+  element.addEventListener("keyup", function (e) {
+    let cursorPostion = this.selectionStart;
+    let value = parseInt(this.value.replace(/[^,\d]/g, ""));
+    let originalLenght = this.value.length;
+    if (isNaN(value)) {
+      this.value = "";
+    } else {
+      this.value = value.toLocaleString("id-ID", {
+        currency: "IDR",
+        style: "currency",
+        minimumFractionDigits: 0
+      });
+      cursorPostion = this.value.length - originalLenght + cursorPostion;
+      this.setSelectionRange(cursorPostion, cursorPostion);
+    }
+  });
+});
+} );
+</script>
 @endsection

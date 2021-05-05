@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('name', 'Login')
+@section('name', 'Login | Akudesain')
 
 @section('content')
 <!-- Content -->
@@ -35,7 +35,7 @@
                     <p class="pl-3 pr-3 text-oten" style="background-color: white;">ATAU</p>
                 </b>
             </div>
-            <div class="d-flex justify-content-center">
+            {{-- <div class="d-flex justify-content-center">
                 <!-- Facebook -->
                 <div class="btn btn-block d-flex justify-content-center"
                     style="width: 300px; margin: 10px 0; border-radius: 2px; background-color:rgb(0, 162, 255) ; color: white;">
@@ -45,17 +45,17 @@
                     </div>
                 </div>
                 <!-- End Facebook -->
-            </div>
+            </div> --}}
 
             <div class="d-flex justify-content-center">
                 <!-- Google -->
-                <div class="btn btn-outline-success d-flex justify-content-center"
+                <a href="{{route('signup')}}" class="btn btn-outline-success d-flex justify-content-center"
                     style="width: 300px; margin: 10px 0;  border-radius: 2px;">
                     <div class="row">
                         <i class="fab fa-google fa-1x" style="margin: 5px 10px;"></i>
-                        <p style="font-weight: 500; margin-bottom: 0;">Daftar dengan Google</p>
+                        <p style="font-weight: 500; margin-bottom: 0;">Daftar dengan Email</p>
                     </div>
-                </div>
+                </a>
                 <!-- End Google -->
             </div>
         </div>

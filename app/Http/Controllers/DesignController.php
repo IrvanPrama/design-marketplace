@@ -6,6 +6,7 @@ use App\Models\Design;
 use Illuminate\Http\Request;
 use App\Models\Review;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class DesignController extends Controller
 {
@@ -43,7 +44,15 @@ class DesignController extends Controller
         } else {
             $datadesign = Design::latest()->get();
         }
-        return view('fragment.design', compact('datadesign'));
+        return view('guest.design', compact('datadesign'));
+    }
+
+    function search(Request $request)
+    {
+        $datadesign = $request->get('q');
+        $datadesign = Design::where('title', 'LIKE', '%' . $datadesign . '%')->get();
+
+        return view('guest.design', compact('datadesign'));
     }
 
     function dashboard_design(Request $request)
@@ -53,18 +62,20 @@ class DesignController extends Controller
         } else {
             $datadesign = Design::latest()->get();
         }
-        return view('fragment.dashboard-design', compact('datadesign'));
+        return view('guest.dashboard-design', compact('datadesign'));
     }
 
     public function store(Request $request)
     {
+        $token = Str::random(5);
+        $id = auth()->user()->id;
         $data1 = $request->design1;
         $data2 = $request->design2;
         $data3 = $request->design3;
 
-        $filename1 = $data1->getClientOriginalName();
-        $filename2 = $data2->getClientOriginalName();
-        $filename3 = $data3->getClientOriginalName();
+        $filename1 = $token . 'designer' . $id . '_' . $data1->getClientOriginalName();
+        $filename2 = $token . 'designer' . $id . '_' . $data2->getClientOriginalName();
+        $filename3 = $token . 'designer' . $id . '_' . $data3->getClientOriginalName();
 
         $dataupload = new Design;
         $dataupload->name = $request->name;
@@ -81,7 +92,7 @@ class DesignController extends Controller
         $data3->move(public_path() . '/assets/design/', $filename3);
         $dataupload->save();
 
-        return redirect('/dashboard/designer');
+        return redirect('/dashboard/designer/edit-portofolio');
     }
 
     public function update_data(Request $request, $id)
@@ -96,37 +107,22 @@ class DesignController extends Controller
         return redirect('/dashboard/designer');
     }
 
-    public function update(Request $request, $id)
+    public function update_avatar(Request $request, $id)
     {
-        if ($request->design1 === 0 && $request->design2 === 0 && $request->design3 === 0) {
-            $change = Design::findorfail($id);
-            $data = [
-                'title' => $request->title,
-                'description' => $request->description,
-            ];
-            $change->update($data);
-            return redirect('/dashboard/designer');
-        } else {
-            $change = Design::findorfail($id);
-            $firstname1 = $change->design1;
-            $firstname2 = $change->design2;
-            $firstname3 = $change->design3;
 
-            $data = [
-                'name' => $request->name,
-                'title' => $request->title,
-                'description' => $request->description,
-                'design1' => $firstname1,
-                'design2' => $firstname2,
-                'design3' => $firstname3,
-            ];
+        $change = Design::findorfail($id);
+        $avatar = $change->avatar;
 
-            $request->design1->move(public_path() . '/assets/design/', $firstname1);
-            $request->design2->move(public_path() . '/assets/design/', $firstname2);
-            $request->design3->move(public_path() . '/assets/design/', $firstname3);
-            $change->update($data);
-            return redirect('/dashboard/designer');
-        }
+        $data = [
+            'name' => $request->name,
+            'title' => $request->title,
+            'description' => $request->description,
+            'avatar' => $avatar,
+        ];
+
+        $request->design1->move(public_path() . '/assets/design/', $avatar);
+        $change->update($data);
+        return redirect('/dashboard/designer/edit-profile');
     }
 
     public function destroy($id)

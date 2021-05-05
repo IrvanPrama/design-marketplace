@@ -24,7 +24,14 @@ class User extends Authenticatable
         'avatar',
         'password',
         'username',
-        'job'
+        'job',
+        'born',
+        'about',
+        'start',
+        'until',
+        'step',
+        'experience',
+
     ];
 
     /**

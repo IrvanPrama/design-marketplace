@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{{asset('assets/logo-new.png')}}">
 
     <!-- My CSS -->
     <link rel="stylesheet" href={{asset('css/style.css')}}>
@@ -52,6 +53,17 @@
     </script>
 
     @yield('script')
+
+    <script>
+        function myFunction() {
+        var strr = $('#now_hp').val();
+
+        str = strr.replace(/0(\d+)/, "$1");
+
+        document.getElementById('now_hp').value = str;
+        console.log(str)
+    }
+    </script>
 </body>
 
 <!-- Footer -->

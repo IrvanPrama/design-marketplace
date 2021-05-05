@@ -35,6 +35,14 @@ a{
     padding-right: 2px !important;
 }
 
+.jumbotron-user{
+    background-image: url(../../assets/jumbo-2.png);
+    background-size: cover;
+    height: 480px;
+    text-align: center;
+    position: relative;
+}
+
 .jumbotron{
     background-image: url(../../assets/jumbotron.png);
     background-size: cover;
@@ -128,6 +136,15 @@ a{
     width: 15rem;
 }
 
+.card-order{
+    margin: 10px;
+    width:22rem;
+}
+
+.font-size-mini{
+    font-size: 12px;
+}
+
 body{
     min-height: fit-content;
 }
@@ -143,7 +160,9 @@ footer{
 .br-full{
     border-radius: 50%;
 }
-
+.br-md{
+    border-radius: 12px !important;
+}
 .br-st{
     border-radius: 2% !important;
 }
@@ -248,6 +267,7 @@ li{
     color: #0084ff;
 }
 
+/* TEXT */
 .text-area{
     height: 70px;
 }
@@ -260,7 +280,36 @@ li{
     text-transform: uppercase;
 }
 
+.bold{
+    font-weight: bold;
+}
 
+.text-1{
+    font-size: 25px;
+}
+
+.text-2{
+    font-size: 18px;
+}
+
+.text-3{
+    font-size: 15px;
+}
+
+
+
+/* color */
+.color-oten{
+    color: rgb(27, 118, 238) !important;
+ }
+
+.grey{
+    background-color: grey;
+}
+
+.white{
+    color: white !important;
+}
 /* Special Product Detail */
 
 /* Hide the images by default */
@@ -346,10 +395,6 @@ li{
 .border-oten{
     border-radius: 25px;
     border: 3px solid rgb(27, 118, 238);
-}
-
-.color-oten{
-   color: rgb(27, 118, 238);
 }
 
 .border-grey{

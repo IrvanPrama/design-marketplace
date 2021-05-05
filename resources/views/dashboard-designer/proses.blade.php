@@ -8,11 +8,11 @@
     <!-- Order List -->
     <section class="mt-5">
         <div class="row mb-3">
-            <a class="btn" style="height:40px; width:180px;">
+            <a href="/dashboard/designer" class="btn"
+                style="height:40px; width:180px; background-color: rgb(206, 206, 206);">
                 <p class="color-oten" style="text-align: center;"><b>Daftar Pekerjaan</b></p>
             </a>
-            <a href="/dashboard/designer/ongoing" class="btn"
-                style="height:40px; width:100px; background-color: rgb(206, 206, 206);">
+            <a href="/dashboard/designer/ongoing" class="btn" style="height:40px; width:100px;">
                 <p class="color-oten" style="text-align: center;"><b>Proses</b></p>
             </a>
             <a href="/dashboard/designer/done" class="btn"
@@ -21,11 +21,11 @@
             </a>
         </div>
         <div class="row">
-            @foreach ($dataorder as $item)
+            @foreach ($dataprocess as $item)
             <div class="card-order"
                 style="border: solid 4px rgba(0, 110, 255, 0.815);border-radius: 20px; height: 260px;">
                 <div class="row mt-0">
-                    <img class="profil-card mb-1" src="
+                    <img class="profil-card mb-1" src=" 
                     
                     @if(!is_null($item->avatar))
                     {{asset('/assets/profile/'.$item->avatar)}}
@@ -50,7 +50,8 @@
                     <p class="font-size-mini"><b>Deadline:</b> {{$item->deadline}}</p>
                     <p class="font-size-mini ml-auto"><b>Anggaran:</b> {{$item->budget}}</p>
                 </div>
-                <form action="/process-store" method="post">
+
+                <form action="/done-store" method="post">
                     {{ csrf_field() }}
                     <input type="text" name="id" value="{{$item->id}}" hidden>
                     <input type="text" name="avatar" value="{{$item->avatar}}" hidden>
@@ -63,9 +64,9 @@
                     <input type="text" name="title_design" value="{{$item->title_design}}" hidden>
                     <input type="text" name="description" value="{{$item->description}}" hidden>
 
-                    <button stype="submit" class="btn btn-success"
+                    <button type="submit" class="btn btn-success"
                         style="margin-right: 30%; margin-left: 30%; width:40%; font-size: 12px; line-height: 1.5; background-color:green; border-radius:10px !important;">
-                        Ambil Pekerjaan</button>
+                        Tandai Selesai</button>
                 </form>
             </div>
             @endforeach
@@ -76,8 +77,8 @@
 </section>
 @endsection
 
-@section('modal')
 
+@section('modal')
 <!-- Modal Review-->
 <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
     aria-hidden="true">
@@ -109,129 +110,53 @@
 </div>
 <!-- End Modal Review-->
 
-<!-- Modal Design-->
-@foreach ($datadesign as $item)
-<div class="modal fade" id="designModal{{$item->id}}" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content br-0">
-            <div class="modal-header">
-                <h5 class="text-oten text_capital">{{$item->title}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Thumbnail images -->
-                <div class="row my-3 d-flex justify-content-around">
-                    <img class="img" src="{{asset('/assets/design/'.$item->design1)}}" style="width:200px; height:200px"
-                        alt="The Woods">
-
-                    <img class="img" src="{{asset('/assets/design/'.$item->design2)}}" style="width:200px; height:200px"
-                        alt="Cinque Terre">
-
-                    <img class="img" src="{{asset('/assets/design/'.$item->design3)}}" style="width:200px; height:200px"
-                        alt="Mountains and fjords">
-                </div>
-                <div class="modal-footer">
-                    <button data-toggle="modal" data-target="#editDesignModal{{$item->id}}" type="button"
-                        class="btn btn-primary br-0">Edit</button>
-                    <a type="button" href="{{url('delete-design', $item->id )}}" class="btn btn-danger br-0">Delete</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
-<!-- End Modal Design-->
-
-<!-- Modal Order Detail -->
-@foreach ($dataorder as $item)
-<div class="modal fade" id="orderModal{{$item->id}}" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content br-0">
-            <div class="modal-header">
-                <h5 class="text-oten text_capital">Pesanan {{$item->category}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body d-flex justify-content-center">
-                <div class="row mx-auto">
-                    <div class="col-sm-6">
-                        <div class="row mx-auto">
-                            <img style="height: 265px; max-width:100%"
-                                src="{{asset('assets/order/'.$item->example_img)}}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 mx-auto">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text_capital">Nama: {{$item->name}}</li>
-                            <li class="list-group-item">Deskripsi: <br>{{$item->description}}</li>
-                            <li class="list-group-item">No. Hp: {{$item->no_hp}}</li>
-                            <li class="list-group-item">Email: {{$item->email}}</li>
-                            <li class="list-group-item">Anggaran: <br> {{$item->budget}}
-                            <li class="list-group-item">Deadline: <br> {{$item->deadline}}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a type="button" href="" class="btn btn-block btn-primary br-0">Hubungi
-                    Pemesan</a>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
-<!-- End Order Detail -->
-
-<!-- Modal Edit Design-->
-@foreach ($datadesign as $item)
-<div class="modal fade" id="editDesignModal{{$item->id}}" tabindex="-1" z-index="10" role="dialog"
-    aria-labelledby="exampleModalCenter" aria-hidden="true">
+<!-- Modal Upload Design-->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content br-0">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Edit Design</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Unggah Design Kamu</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/design/update/{{$item->id}}" method="post" enctype="multipart/form-data">
+                <form action="/design/upload" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <input type="text" id="name" name="name" class="form-control" value="{{$item->name}}">
-                    <div class="form-group mb-4">
+                    <input type="text" id="name" name="name" class="form-control" value="{{auth()->user()->name}}"
+                        hidden>
+                    <input type="text" id="avatar" name="avatar" class="form-control" value="{{auth()->user()->avatar}}"
+                        hidden>
+                    <input type="text" id="user_id" name="user_id" class="form-control" value="{{auth()->user()->id}}"
+                        hidden>
+                    <div class="form-group">
                         <label for="title">Judul</label>
-                        <input type="text" id="title" name="title" class="form-control" value="{{$item->title}}">
+                        <input class="form-control" id="title" name="title" style="border-radius: 0"
+                            placeholder="Design Brosur">
                     </div>
-                    <div class="form-group mb-4 form-floating">
+                    <div class="form-floating">
                         <label for="description">Deskripsi</label>
-                        <textarea class="form-control" id="description" name="description" rows="4"
-                            placeholder="contoh: Siap mengerjakan Disain Brosur untuk menunjang promosi produk atau event anda baik untuk media online maupun media cetak dengan resvisi unlimited selama jam kerja."
-                            style="border-radius: 0">{{$item->description}}</textarea>
+                        <textarea class="form-control" id="description" name="description"
+                            style="border-radius: 0"></textarea>
+                        <label for="description">Contoh: Siap mengerjakan Disain Brosur untuk menunjang promosi produk
+                            atau event anda baik untuk media online maupun media cetak dengan resvisi unlimited selama
+                            jam kerja.</label>
                     </div>
-                    <div class="form-group mb-4">
-                        <label for="name">Unggah Design 1</label>
-                        <input type="file" name="design1" class="form-control" value="{{$item->design1}}">
-                        <label for="name">Unggah Design 2</label>
-                        <input type="file" name="design2" class="form-control" value="{{$item->design2}}">
-                        <label for="name">Unggah Design 3</label>
-                        <input type="file" name="design3" class="form-control" value="{{$item->design3}}">
+                    <div class="form-group row">
+                        <input class="" type="file" id="design1" name="design1" style="border-radius: 0">
+                        <input class="" type="file" id="design2" name="design2" style="border-radius: 0">
+                        <input class="" type="file" id="design3" name="design3" style="border-radius: 0">
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" style="border-radius: 0">Unggah</button>
+                        <button type="submit" class="btn btn-primary br-0">Unggah</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-@endforeach
-<!-- End Modal Edit Design-->
+<!-- End Modal Upload Design-->
 
 
 <!-- Modal Profil-->
@@ -268,7 +193,7 @@
 @endsection
 
 @section('footer')
-
+@yield('footer-desc')
 @endsection
 
 @section('script')

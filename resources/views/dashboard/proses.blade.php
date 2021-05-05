@@ -8,11 +8,10 @@
     <!-- Order List -->
     <section class="mt-5">
         <div class="row mb-3">
-            <a href="/dashboard" class="btn" style="height:40px; width:180px;">
+            <a href="/dashboard" class="btn" style="height:40px; width:180px; background-color:rgb(206, 206, 206);">
                 <p class="color-oten" style="text-align: center;"><b>Daftar Pesanan</b></p>
             </a>
-            <a href="/dashboard/user/ongoing" class="btn"
-                style="height:40px; width:100px; background-color: rgb(206, 206, 206);">
+            <a href="/dashboard/user/ongoing" class="btn" style="height:40px; width:100px;">
                 <p class="color-oten" style="text-align: center;"><b>Proses</b></p>
             </a>
             <a href="/dashboard/user/done" class="btn"
@@ -21,7 +20,7 @@
             </a>
         </div>
         <div class="row">
-            @foreach ($dataorder as $item)
+            @foreach ($dataprocess as $item)
             <div class="card-order"
                 style="border: solid 4px rgba(0, 110, 255, 0.815);border-radius: 20px; height: 260px;">
                 <div class="row mt-0">
@@ -50,12 +49,6 @@
                     <p class="font-size-mini"><b>Deadline:</b> {{$item->deadline}}</p>
                     <p class="font-size-mini ml-auto"><b>Anggaran:</b> {{$item->budget}}</p>
                 </div>
-                <form method="post">
-                    <input type="text" id="name" name="name" value="{{$item->name}}" hidden>
-                    <input type="text" id="no_hp" name="no_hp" value="{{$item->no_hp}}" hidden>
-                    <button class="btn btn-success br-md" style="width: 40%; margin-right: 30%; margin-left: 30%;"
-                        type="button" id="sendwa" name="sendwa">Konfirmasi</button>
-                </form>
             </div>
             @endforeach
         </div>
@@ -65,8 +58,8 @@
 </section>
 @endsection
 
-@section('modal')
 
+@section('modal')
 <!-- Modal Review-->
 <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
     aria-hidden="true">
@@ -98,33 +91,93 @@
 </div>
 <!-- End Modal Review-->
 
+<!-- Modal Upload Design-->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content br-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Unggah Design Kamu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/design/upload" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <input type="text" id="name" name="name" class="form-control" value="{{auth()->user()->name}}"
+                        hidden>
+                    <input type="text" id="avatar" name="avatar" class="form-control" value="{{auth()->user()->avatar}}"
+                        hidden>
+                    <input type="text" id="user_id" name="user_id" class="form-control" value="{{auth()->user()->id}}"
+                        hidden>
+                    <div class="form-group">
+                        <label for="title">Judul</label>
+                        <input class="form-control" id="title" name="title" style="border-radius: 0"
+                            placeholder="Design Brosur">
+                    </div>
+                    <div class="form-floating">
+                        <label for="description">Deskripsi</label>
+                        <textarea class="form-control" id="description" name="description"
+                            style="border-radius: 0"></textarea>
+                        <label for="description">Contoh: Siap mengerjakan Disain Brosur untuk menunjang promosi produk
+                            atau event anda baik untuk media online maupun media cetak dengan resvisi unlimited selama
+                            jam kerja.</label>
+                    </div>
+                    <div class="form-group row">
+                        <input class="" type="file" id="design1" name="design1" style="border-radius: 0">
+                        <input class="" type="file" id="design2" name="design2" style="border-radius: 0">
+                        <input class="" type="file" id="design3" name="design3" style="border-radius: 0">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary br-0">Unggah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Upload Design-->
+
+
+<!-- Modal Profil-->
+<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content br-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Unggah Foto Profil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/profile/update" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="form-group mb-4">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" name="name" class="form-control" value="{{auth()->user()->name}}">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="name">Unggah Foto Profil</label>
+                        <input type="file" name="avatar" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" style="border-radius: 0">Unggah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Profil-->
 @endsection
 
 @section('footer')
-
+@yield('footer-desc')
 @endsection
 
 @section('script')
-
-<!-- Send WA-->
-<script>
-    $(document).ready(function() {
-    $('#sendwa').click(function() {
-        var name = $('#name').val();
-        var nowa = $('#no_hp').val();
-        var pesan = 
-            ' **ADA PESANAN AKUDESAIN** \n\n' + 
-            ' Hay saya ' + name + 
-            '\n saya memesan design pada anda, mari lihat di aplikasi Akudesain.' + '\n\n' + 
-            'www.akudesain.id/dashboard/designer';
-
-        pesan = encodeURI(pesan);
-        window.open('https://api.whatsapp.com/send?phone='+ nowa +'&text=' + pesan, '_blank');
-    });
-});
-</script>
-<!-- End Send WA-->
-
 <script>
     var slideIndex = 1;
 showSlides(slideIndex);

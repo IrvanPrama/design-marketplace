@@ -1,22 +1,26 @@
 @extends('layout.master')
 
-@section('name','Design List')
+@section('name','Design List | Akudesain')
 
 @section('nav-item')
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Cari Desain" aria-label="Search"
-                style="border-radius: 2px;">
-            <button class="btn" style="color: rgba(128, 128, 128, 0.671); margin-left:-50px;" type="submit"><i
-                    class="fa fa-search"></i></button>
-        </form>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <li>
+            <form action="{{route('search')}}" method="get" class="form-inline my-2 my-lg-0" autocomplete="off">
+                <input name="q" class="form-control mr-sm-2" type="search" placeholder="Cari Desain"
+                    style="border-radius: 2px;">
+                <button class="btn" style="color: rgba(128, 128, 128, 0.671); margin-left:-50px;" type="submit"><i
+                        class="fa fa-search"></i></button>
+            </form>
+        </li>
+        @if (is_null(auth()->user()))
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{{route('design')}}">
+                Portofolio
+            </a>
+        </li>
+        @endif
     </ul>
-
     <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
             <a class="nav-link text-white" href="{{route('signup')}}">Daftar</a>
@@ -26,10 +30,52 @@
         </li>
 
         <li class="btn btn-success">
-            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" style="padding:0; color: white">Buat
+            <a class="nav-link" href="{{route('order')}}" tabindex="-1" aria-disabled="true"
+                style="padding:0; color: white">Buat
                 Pesanan</a>
         </li>
     </ul>
+    </ul>
+    @if (auth()->user())
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown mr-2 pt-1">
+            <a class="nav-link text-white text_capital">
+                {{auth()->user()->job}}
+            </a>
+        </li>
+        <li class="nav-item dropdown mr-2">
+            <button class="btn" style="border-radius: 18px" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <div type="button" class="nav-linkdropdown-toggle text-white" href="#" id="navbarDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="br-full" src="@if(!is_null(auth()->user()->avatar))
+                        {{asset('/assets/profile/'.auth()->user()->avatar)}}
+                        @else
+                        {{asset('/assets/profile/default.jpg')}}
+                        @endif" alt="profil" style="width: 40px; height:40px;">
+                        </div>
+                    </li>
+                    <li class="nav-item mr-3 ml-3 mt-2">
+                        <p class="text-white text_capital"><b>{{auth()->user()->name}}</b></p>
+                    </li>
+                </ul>
+            </button>
+            <div class="dropdown-menu">
+                <a href="{{route('dashboard')}}" class="dropdown-item" type="button">Dashboard</a>
+                <div class="dropdown-divider"></div>
+                <a href="/dashboard/user/edit-profile" class="dropdown-item" type="button">Edit Profil</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{route('logout')}}">Log Out</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" type="button" data-toggle="modal" data-target="#reviewModal">Buat Review</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Level <b>{{auth()->user()->role}}</b></a>
+            </div>
+        </li>
+    </ul>
+    @endif
 </div>
 @endsection
 
@@ -59,12 +105,22 @@
             </div>
             <a class="btn btn-primary latest dropdown-toggle" href="/design" type="button">Terbaru</a>
         </div>
+        @if (is_null($datadesign))
+        <div class="error">
+            Data Tidak Ada
+        </div>
+        @else
         <div class="row d-flex justify-content-center">
             @foreach ($datadesign as $item)
-            <a href="/detail/{{$item->id}}" class="card br-0"
+            <a href="/dashboard/detail/{{$item->id}}" class="card br-0"
                 style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
                 <div class="row mt-0">
-                    <img class="profil-card mb-1" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
+                    <img class="profil-card mb-1" src="
+                    @if(!is_null($item->avatar))
+                    {{asset('/assets/profile/'.$item->avatar)}}
+                    @else
+                    {{asset('/assets/profile/default.jpg')}}
+                    @endif" alt="profil">
                     <p class="text-oten text_capital"
                         style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
                         {{$item->name}}
@@ -77,8 +133,9 @@
             </a>
             @endforeach
         </div>
+        @endif
         <div class="d-flex justify-content-center mt-4">
-            <a href="/login" class="btn btn-success">Pesan Sekarang</a>
+            <a href="{{route('order')}}" class="btn btn-success">Pesan Sekarang</a>
         </div>
     </div>
     <!-- End Desain Terbaru -->

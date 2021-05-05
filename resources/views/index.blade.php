@@ -1,18 +1,13 @@
 @extends('layout.master')
 
-@section('name', 'Home')
+@section('name', 'Akudesain')
 
 @section('nav-item')
-<form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Cari Desain" aria-label="Search"
-        style="border-radius: 2px;">
+<form action="{{route('search')}}" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" name="q" type="search" placeholder="Cari Desain" style="border-radius: 2px;">
     <button class="btn" style="color: rgba(128, 128, 128, 0.671); margin-left:-50px;" type="submit"><i
             class="fa fa-search"></i></button>
 </form>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
@@ -49,14 +44,14 @@
         <p class="text-white" style="font-size: 20px;">Sebuah media yang mempermudah anda<br>menemukan jasa
             desain
         </p>
-        <a href="/login" class="btn btn-success" style="text-transform: uppercase;">Pesan Sekarang</a>
+        <a href="{{route('order')}}" class="btn btn-success" style="text-transform: uppercase;">Pesan Sekarang</a>
     </div>
 </div>
 <!-- End Jumbotron -->
 
 <!-- Bar Panel -->
 <div class="container">
-    <div class="row justify-content-center">
+    <a href="{{route('design')}}" class="row justify-content-center">
         <div class="col-lg-12 bar-panel">
             <div class="row">
                 <div class="col-lg text-center pr-1 pl-1 spc-panel">
@@ -97,7 +92,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </a>
 </div>
 <!-- End Bar Panel -->
 </section>
@@ -151,7 +146,16 @@
                 <a href="/detail/{{$item->id}}" class="card br-0"
                     style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
                     <div class="row mt-0">
-                        <img class="profil-card mb-1" src="{{asset('/assets/profile/'.$item->avatar)}}" alt="profil">
+                        <img class="profil-card mb-1" src="
+                        
+                        @if(!is_null($item->avatar))
+                        {{asset('/assets/profile/'.$item->avatar)}}
+                    
+                        @else
+                        {{asset('/assets/profile/default.jpg')}}
+                        @endif
+                        
+                        " alt="profil">
                         <p class="text-oten text_capital"
                             style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
                             {{$item->name}}
@@ -221,8 +225,16 @@
                                 @foreach ($datareview as $item)
                                 <div class="col-md-4 text-center">
                                     <div class="profile">
-                                        <img src="{{asset('/assets/profile/'.$item->avatar)}}" class="user"
-                                            alt="profile">
+                                        <img src="
+                                        
+                                        @if(!is_null($item->avatar))
+                                        {{asset('/assets/profile/'.$item->avatar)}}
+                                    
+                                        @else
+                                        {{asset('/assets/profile/default.jpg')}}
+                                        @endif
+                                        
+                                        " class="user" alt="profile">
                                         <h3 class="text_capital">{{$item->name}}</h3>
                                         <div class="text-area">
                                             <p class="text-review">"{{$item->review}}"</p>

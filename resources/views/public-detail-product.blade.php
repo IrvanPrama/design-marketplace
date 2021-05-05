@@ -116,7 +116,16 @@
                             </p>
 
                         </div>
-                        <span><i class="far fa-clock" style="font-size: 20px"></i></span> Lama Pengerjaan: 3 Hari</p>
+                        <div class="row ml-1 mr-1">
+                            <p style="font-size: 20px;"><span><i class="far fa-clock"
+                                        style="font-size: 30px"></i></span>
+                                <span> Lama Pengerjaan:
+                                    3 Hari</span>
+                            </p>
+                            <p style="font-size: 20px;" class="ml-auto bold"><span><i class="fas fa-money-bill"
+                                        style="font-size: 30px"></i></span>
+                                Rp.50.000</p>
+                        </div>
                         <div class="row">
 
                             <a href="/login" class="btn btn-success mr-auto ml-auto" style="width: 35%">Pesan

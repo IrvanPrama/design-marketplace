@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('name', 'Admin Signup')
+@section('name', 'Admin Signup | Akudesain')
 @section('content')
 
 <!-- Daftar Button -->
@@ -10,9 +10,9 @@
             <div>
                 <img src="{{asset('assets/designer.png')}}" alt=""
                     style="width: 40%; height: 40%; margin: 0 40% 0 33%;">
-                <p class="text-h3" style="margin: 10px auto 3px auto; font-weight:bold; font-size: 2rem;">Desainer
+                <p class="text-h3" style="margin: 10px auto 3px auto; font-weight:bold; font-size: 2rem;">Admin
+                    <br>Akudesain
                 </p>
-                <p class="text-h4 mx-5" style="font-weight: 500;">Sebagai Admin</p>
             </div>
         </div>
         <div class="col-lg-5">
@@ -40,14 +40,15 @@
                         </div>
                         <div class="form-group">
                             <input type="password" name="password" class="form-control" id="password"
-                                placeholder="Password">
+                                placeholder="Password" autocomplete="off">
                         </div>
                         <div class="form-group mb-4">
-                            <input type="password" name="password" class="form-control" id="password2"
+                            <input type="password2" name="password2" class="form-control" id="password2"
                                 placeholder="Confirm Password">
                         </div>
                         <b>
-                            <button type="submit" class="btn btn-block btn-success">Daftar</button>
+                            <button onclick="myFunction()" type="submit"
+                                class="btn btn-block btn-success">Daftar</button>
                     </form>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('nama', 'Signup')
+@section('nama', 'Signup | Akudesain')
 
 @section('content')
 <!-- Daftar Button -->
