@@ -46,7 +46,7 @@
                                     </li>
                                     <li class="nav-item mr-1">
                                         <a href="/dashboard/designer">
-                                            <p class="text-white pt-1">{{auth()->user()->job}}</p>
+                                            <p class="text-white pt-1 text_capital">{{auth()->user()->job}}</p>
                                         </a>
                                     </li>
                                     <div class="btn-group">

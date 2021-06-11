@@ -44,7 +44,7 @@ class ProcessController extends Controller
     public function process_user()
     {
         $id = auth()->user()->id;
-        $dataprocess = Process::where('designer_id', $id)->get();
+        $dataprocess = Process::where('user_id', $id)->get();
         return view('dashboard.proses', compact('dataprocess'));
     }
 
@@ -85,7 +85,7 @@ class ProcessController extends Controller
     public function done_user()
     {
         $id = auth()->user()->id;
-        $dataprocess = Done::where('designer_id', $id)->get();
+        $dataprocess = Done::where('user_id', $id)->get();
         $datadetail = Design::where('id', $id)->get();
         return view('dashboard.selesai', compact('dataprocess', 'datadetail'));
     }

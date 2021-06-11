@@ -30,9 +30,9 @@ class OrderController extends Controller
             'description' => 'required|max:300',
         ]);
 
-        $designer = User::where('id', $request->designer_id)->get();
-        $nowa_designer = $designer->no_hp;
-        dd($nowa_designer);
+        // $designer = User::find($request->designer_id);
+        // $nowa_designer = $designer->no_hp;
+
         $dataupload = new Order;
         $dataupload->name = auth()->user()->name;
         $dataupload->email = auth()->user()->email;
@@ -43,8 +43,8 @@ class OrderController extends Controller
         $dataupload->title_design = $request->title_design;
         $dataupload->budget = $request->budget;
         $dataupload->category = $request->category;
-        $dataupload->no_hp_designer = $nowa_designer;
-        $dataupload->no_hp = auth()->user()->no_hp;
+        // $dataupload->no_hp_designer = $nowa_designer;
+        $dataupload->no_hp = $request->no_hp;
         $dataupload->deadline = $request->deadline;
         $dataupload->description = $request->description;
 
