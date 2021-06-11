@@ -86,24 +86,24 @@
     <h3 class="text-sedang mb-5 text-center" style="text-align: left;">Lihat portofolio terbaik kami dengan berbagai
         macam
         pilihan desain<br>yang sesuai dengan kebutuhan anda</h3>
-    <div class="col-lg-12">
+    <div class="col-lg-12 mb-2">
         <div class="row">
             <div class="dropdown">
                 <div class="btn btn-primary category mr-2 dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Katagori</div>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/design?category=logo">Logo</a>
-                    <a class="dropdown-item" href="/design?category=kartu nama">Kartu Nama</a>
-                    <a class="dropdown-item" href="/design?category=brosur">Brosur</a>
-                    <a class="dropdown-item" href="/design?category=banner">Banner</a>
-                    <a class="dropdown-item" href="/design?category=feed ig">Feed IG</a>
-                    <a class="dropdown-item" href="/design?category=cv">Curriculum Vitae (CV)</a>
-                    <a class="dropdown-item" href="/design?category=kaos">Kaos</a>
-                    <a class="dropdown-item" href="/design?category=ilustrasi">Ilustrasi</a>
-                    <a class="dropdown-item" href="/design?category=jasa">Jasa Lainnya</a>
+                    <a class="dropdown-item" href="public/design?category=logo">Logo</a>
+                    <a class="dropdown-item" href="public/design?category=kartu nama">Kartu Nama</a>
+                    <a class="dropdown-item" href="public/design?category=brosur">Brosur</a>
+                    <a class="dropdown-item" href="public/design?category=banner">Banner</a>
+                    <a class="dropdown-item" href="public/design?category=feed ig">Feed IG</a>
+                    <a class="dropdown-item" href="public/design?category=cv">Curriculum Vitae (CV)</a>
+                    <a class="dropdown-item" href="public/design?category=kaos">Kaos</a>
+                    <a class="dropdown-item" href="public/design?category=ilustrasi">Ilustrasi</a>
+                    <a class="dropdown-item" href="public/design?category=jasa">Jasa Lainnya</a>
                 </div>
             </div>
-            <a class="btn btn-primary latest dropdown-toggle" href="/design" type="button">Terbaru</a>
+            <a class="btn btn-primary latest dropdown-toggle" href="public/design" type="button">Terbaru</a>
         </div>
         @if (is_null($datadesign))
         <div class="error">
@@ -145,7 +145,7 @@
 @section('footer')
 <div class="row">
     <div class="col-lg-5">
-        <img src="../assets/logo.png" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
+        <img src="{{asset('assets/logo.png')}}" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
         <p class="text-white">AkuDesain adalah sebuah platform yang memudahkan anda dalam menemukan
             jasa
             desain.

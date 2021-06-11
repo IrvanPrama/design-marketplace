@@ -57,7 +57,8 @@ Route::get('/dashboard/designer/edit-profile', [DashboardController::class, 'pro
 Route::post('/store-update-profile', [UserController::class, 'update_designer'])->middleware('auth');
 Route::post('/store-update-profile-user', [UserController::class, 'update_user'])->middleware('auth');
 Route::post('/store-update-password', [UserController::class, 'update_password_designer'])->middleware('auth');
-Route::post('/store-update-avatar', [UserController::class, 'update_avatar_designer'])->middleware('auth');
+Route::post('/store-update-avatar-designer', [UserController::class, 'update_avatar_designer'])->middleware('auth');
+Route::post('/store-update-avatar-user', [UserController::class, 'update_avatar_user'])->middleware('auth');
 
 Route::get('/design', [DesignController::class, 'view_design'])->name('design');
 Route::get('/dashboard/design', [DashboardController::class, 'view_design'])->name('dashboard-design')->middleware('auth');

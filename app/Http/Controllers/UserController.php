@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use \App\Models\Review;
 use \App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -13,7 +12,6 @@ class UserController extends Controller
     {
         return view('auths.signup-designer');
     }
-
 
     public function client()
     {
@@ -29,13 +27,17 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|max:20',
-            'email' => 'required|max:20|email:filter',
+            'email' => 'required|max:255|email|email:filter|unique:users',
             'role' => 'required',
             'password' => 'required|min:8',
-            'password2' => 'required|max:20',
+            'password2' => 'required|min:8',
             'username' => 'required|max:20',
             'no_hp' => 'required|numeric|digits_between:9,13',
             'job' => 'required|max:15',
+            'username' => 'required|max:15',
+        ], [], [
+            'no_hp' => 'phone number',
+            'password2' => 'password',
         ]);
 
         User::create([
@@ -80,6 +82,9 @@ class UserController extends Controller
             'start' => 'required|date|before:today',
             'until' => 'required|date',
             'step' => 'required',
+        ], [], [
+            'no_hp' => 'phone number',
+            'about' => 'user about',
         ]);
 
         $id = auth()->user()->id;
@@ -114,9 +119,13 @@ class UserController extends Controller
             ];
             $change->update($data);
             return redirect('/dashboard/designer');
+
         } else {
+
             return redirect('/dashboard/designer/edit-profile');
+
         };
+
     }
 
     public function update_avatar_designer(Request $request)
@@ -126,9 +135,7 @@ class UserController extends Controller
 
         if ($change->avatar !== 'default.jpg') {
             $file = public_path('/assets/design/') . $change->avatar;
-            if (file_exists($change->avatar)) {
-                @unlink($file);
-            }
+            @unlink($file);
         }
 
         $avatarname = $request->avatar;
@@ -144,7 +151,6 @@ class UserController extends Controller
         return back();
     }
 
-
     // User
     public function update_user(Request $request)
     {
@@ -155,6 +161,9 @@ class UserController extends Controller
             'no_hp' => 'required|numeric|digits_between:10,14',
             'born' => 'required|before:today',
             'job' => 'required|max:20',
+        ], [], [
+            'no_hp' => 'phone number',
+            'about' => 'user about',
         ]);
 
         $id = auth()->user()->id;
@@ -196,14 +205,14 @@ class UserController extends Controller
         $change = User::findorfail($id);
 
         if ($change->avatar !== 'default.jpg') {
-            $file = public_path('/assets/design/') . $change->avatar;
+            $file = public_path('/assets/profile/') . $change->avatar;
             if (file_exists($change->avatar)) {
                 @unlink($file);
             }
         }
 
         $avatarname = $request->avatar;
-        $filename =  $id . 'designer_' . $avatarname->getClientOriginalName();
+        $filename =  $id . 'user_' . $avatarname->getClientOriginalName();
 
         $data = [
             'avatar' => $filename,

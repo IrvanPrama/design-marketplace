@@ -67,6 +67,7 @@ class DesignController extends Controller
 
     public function store(Request $request)
     {
+
         $token = Str::random(5);
         $id = auth()->user()->id;
         $data1 = $request->design1;
@@ -87,6 +88,22 @@ class DesignController extends Controller
         $dataupload->design2 = $filename2;
         $dataupload->design3 = $filename3;
 
+
+        // $data1 = $request->design1;
+        // if ($request->hasFile('avatar')) {
+        //     $locations = 'public/images/design/';
+        //     $image = $request->file('avatar');
+        //     $image_name = $image->getClientOriginalName();
+        //     $path = $request->file('avatar')->storeAs($locations, $image_name);
+
+        //     $data1['avatar'] = $image_name;
+        // }
+
+        // $locations = 'public/images/design/';
+
+        // $request->file('design1')->storeAs($locations, $filename1);
+        // $request->file('design2')->storeAs($locations, $filename2);
+        // $request->file('design3')->storeAs($locations, $filename3);
         $data1->move(public_path() . '/assets/design/', $filename1);
         $data2->move(public_path() . '/assets/design/', $filename2);
         $data3->move(public_path() . '/assets/design/', $filename3);

@@ -100,10 +100,6 @@
 
 @endsection
 
-@section('footer')
-
-@endsection
-
 @section('script')
 
 <!-- Send WA-->

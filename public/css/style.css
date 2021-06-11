@@ -44,7 +44,6 @@ a{
 }
 
 .jumbotron{
-    background-image: url(../../assets/jumbotron.png);
     background-size: cover;
     height: 480px;
     text-align: center;

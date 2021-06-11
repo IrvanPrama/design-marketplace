@@ -56,7 +56,7 @@
 @section('footer')
 <div class="row">
     <div class="col-lg-5">
-        <img src="../assets/logo.png" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
+        <img src="{{asset('assets/logo.png')}}" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
         <p class="text-white">AkuDesain adalah sebuah platform yang memudahkan anda dalam menemukan
             jasa
             desain.

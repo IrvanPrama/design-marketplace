@@ -168,7 +168,7 @@ Ceritakan sedikit tentang anda (max: 300 karakter)
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/store-update-avatar" method="post" enctype="multipart/form-data">
+                <form action="/store-update-avatar-user" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group mb-4">
                         <label for="name">Unggah Foto</label>

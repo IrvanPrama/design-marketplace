@@ -165,7 +165,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-10 pl-1">
-                                <input class="form-control border-grey" type="text" name="no_hp"
+                                <input class="form-control border-grey" type="text" name="no_hp" name="no_hp" id="no_hp"
                                     placeholder="No. Handphone / WA" value="{{auth()->user()->no_hp}}" disabled>
                             </div>
                         </div>

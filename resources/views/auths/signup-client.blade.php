@@ -54,7 +54,7 @@
                             <p class="mb-2">Info Akun</p>
                         </b>
                         <div class="form-group mb-4">
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control  @error('name')
+                            <input type="text" name="name" max="20" value="{{ old('name') }}" class="form-control  @error('name')
                             is-invalid
                             @enderror" id="name" placeholder="Nama Lengkap">
                             @error('deadline')
@@ -62,7 +62,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email')
+                            <input type="email" name="email" max="225" value="{{ old('email') }}" class="form-control @error('email')
                             is-invalid
                             @enderror" id="email" placeholder="Email" autocomplete="off" aria-describedby="emailHelp">
                             @error('email')
@@ -70,7 +70,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" value="{{ old('password') }}" class="form-control @error('password')
+                            <input type="password" name="password" min="8" value="{{ old('password') }}" class="form-control @error('password')
                             is-invalid
                             @enderror" id="password" placeholder="Password" autocomplete="off">
                             @error('password')
@@ -78,7 +78,7 @@
                             @enderror
                         </div>
                         <div class="form-group mb-4">
-                            <input type="password" name="password2" value="{{ old('password2') }}" class="form-control @error('password2')
+                            <input type="password" name="password2" min="8" value="{{ old('password2') }}" class="form-control @error('password2')
                             is-invalid
                             @enderror" id="password2" placeholder="Confirm Password">
                             @error('password2')
@@ -89,7 +89,7 @@
                             <p class="mb-2">Info Kontak</p>
                         </b>
                         <div class="form-group">
-                            <input type="text" name="job" value="{{ old('job') }}" class="form-control @error('job')
+                            <input type="text" name="job" max="15" value="{{ old('job') }}" class="form-control @error('job')
                             is-invalid
                             @enderror" id="job" placeholder="Pekerjaan">
                             @error('job')
@@ -97,7 +97,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input type="integer" id="now_hp" value="{{ old('no_hp') }}" name="no_hp" class="form-control @error('no_hp')
+                            <input type="tel" id="now_hp" max="" value="{{ old('no_hp') }}" name="no_hp" class="form-control @error('no_hp')
                             is-invalid
                             @enderror" id="now_hp" placeholder="No Handphone">
                             @error('no_hp')
@@ -105,7 +105,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input type="text" name="username" value="{{ old('username') }}" class="form-control @error('username')
+                            <input type="text" name="username" max="15" value="{{ old('username') }}" class="form-control @error('username')
                             is-invalid
                             @enderror" id="username" placeholder="username">
                             @error('username')
@@ -128,7 +128,7 @@
 @section('footer')
 <div class="row">
     <div class="col-lg-5">
-        <img src="../assets/logo.png" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
+        <img src="{{asset('assets/logo.png')}}" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
         <p class="text-white">AkuDesain adalah sebuah platform yang memudahkan anda dalam menemukan
             jasa
             desain.

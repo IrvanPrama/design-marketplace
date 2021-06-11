@@ -36,7 +36,7 @@
 
 @section('content')
 <!-- Jumbotron -->
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" style="background-image: url({{asset('assets/jumbotron.png')}});">
     <div class="container">
         <h1 class="display-4 text-white" style="font-weight: 500;">Temukan Desain
             Anda<br>Dengan Mudah
@@ -109,7 +109,7 @@
                 <div class="row text-center d-flex justify-content-center">
                     <div class="col-lg">
                         <div class="text-box">
-                            <img src="../assets/cari.png" alt="cari" class="icon-md">
+                            <img src="{{asset('assets/cari.png')}}" alt="cari" class="icon-md">
                             <p class="text-h3">Cari Desain yang Diinginkan</p>
                             <p>Anda bisa memilih desain yang diinginkan dengan melihat portofolio desain dari
                                 para desainer sesuaikan keinginan anda</p>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="col-lg">
                         <div class="text-box">
-                            <img src="../assets/bayar.png" alt="cari" class="icon-md">
+                            <img src="{{asset('assets/bayar.png')}}" alt="cari" class="icon-md">
                             <p class="text-h3">Isi Catata Desain dan Bayar</p>
                             <p>Isi catatan desain yang anda inginkan kemudian diskusikan bersama desainer
                                 kemudian <br>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="col-lg">
                         <div class="text-box">
-                            <img src="../assets/phone.png" alt="cari" class="icon-md">
+                            <img src="{{asset('assets/phone.png')}}" alt="cari" class="icon-md">
                             <p class="text-h3">Desain Selesai</p>
                             <p>Desain yang anda inginkan <br> selesai tepat waktu</p>
                         </div>
@@ -181,7 +181,7 @@
                 <div class="row text-center d-flex justify-content-center">
                     <div class="col-lg">
                         <div class="text-box">
-                            <img src="../assets/choose.png" alt="cari" class="icon-md">
+                            <img src="{{asset('assets/choose.png')}}" alt="cari" class="icon-md">
                             <p class="text-h3">Kemudahan Dalam Memilih Desain</p>
                             <p> <br>Pilih desain yang anda inginkan dengan berbagai pilihan desain yang sesuai
                                 dengan keperluan anda serta kemudahan dalam revisi desain</p>
@@ -189,7 +189,7 @@
                     </div>
                     <div class="col-lg">
                         <div class="text-box">
-                            <img src="../assets/user.png" alt="cari" class="icon-md">
+                            <img src="{{asset('assets/user.png')}}" alt="cari" class="icon-md">
                             <p class="text-h3">Kemudahan dan Keamanan Pembayaran</p>
                             <p>Metode pembayaran yang beragam akan memudahkan anda. Serta pembayaran akan kami
                                 pegang terlebih dahulu sebelum kami teruskan ke desainer sehingga transaksi menjadi
@@ -198,7 +198,7 @@
                     </div>
                     <div class="col-lg">
                         <div class="text-box">
-                            <img src="../assets/working.png" alt="cari" class="icon-md">
+                            <img src="{{asset('assets/working.png')}}" alt="cari" class="icon-md">
                             <p class="text-h3">Jaminan Harga Terjangkau</p>
                             <p> <br>Dapatkan desain yang anda inginkan dengan harga terjangkau</p>
                         </div>
@@ -271,7 +271,7 @@
 @section('footer')
 <div class="row">
     <div class="col-lg-5">
-        <img src="../assets/logo.png" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
+        <img src="{{asset('assets/logo.png')}}" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
         <p class="text-white">AkuDesain adalah sebuah platform yang memudahkan anda dalam menemukan
             jasa
             desain.
