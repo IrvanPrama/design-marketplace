@@ -1,156 +1,295 @@
 @extends('dashboard.master-user')
 
-@section('name','Dashboard | Akudesain')
+@section('name','Dashboard User | Akudesain')
 
 @section('content')
-<div class="container my-5">
+<!-- Jumbotron -->
+<div class="jumbotron jumbotron-fluid" style="background-image: url({{asset('assets/jumbotron.png')}});">
+    <div class="container">
+        <h1 class="display-4 text-white" style="font-weight: 500;">Temukan Desain
+            Anda<br>Dengan Mudah
+        </h1>
+        <p class="text-white" style="font-size: 20px;">Sebuah media yang mempermudah anda<br>menemukan jasa
+            desain
+        </p>
+        <a href="{{route('order')}}" class="btn btn-success" style="text-transform: uppercase;">Pesan Sekarang</a>
+    </div>
+</div>
+<!-- End Jumbotron -->
 
-    <!-- Order List -->
-    <section class="mt-5">
-        <div class="row mb-3">
-            <a href="/dashboard" class="btn" style="height:40px; width:180px;">
-                <p class="color-oten" style="text-align: center;"><b>Daftar Pesanan</b></p>
-            </a>
-            <a href="/dashboard/user/ongoing" class="btn"
-                style="height:40px; width:100px; background-color: rgb(206, 206, 206);">
-                <p class="color-oten" style="text-align: center;"><b>Proses</b></p>
-            </a>
-            <a href="/dashboard/user/done" class="btn"
-                style="height:40px; width:100px; background-color: rgb(206, 206, 206);">
-                <p class="color-oten" style="text-align: center;"><b>Selesai</b></p>
-            </a>
+<!-- Bar Panel -->
+<div class="container">
+    <a href="{{route('design')}}" class="row justify-content-center">
+        <div class="col-lg-12 bar-panel">
+            <div class="row">
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-2.png')}}" alt="image1" class="panel-img">
+                    <p><b>Logo</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-3.png')}}" alt="image1" class="panel-img">
+                    <p><b>Kartu Nama</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-4.png')}}" alt="image1" class="panel-img">
+                    <p><b>Brosur</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-5.png')}}" alt="image1" class="panel-img">
+                    <p><b>Banner</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-6.png')}}" alt="image1" class="panel-img">
+                    <p><b>Feed IG</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-7.png')}}" alt="image1" class="panel-img">
+                    <p><b>CV</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-8.png')}}" alt="image1" class="panel-img">
+                    <p><b>Kaos</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-9.png')}}" alt="image1" class="panel-img">
+                    <p><b>Ilustrasi</b></p>
+                </div>
+                <div class="col-lg text-center pr-1 pl-1 spc-panel">
+                    <img src="{{asset('/assets/asset-10.png')}}" alt="image1" class="panel-img">
+                    <p><b>Jasa Lainnya</b></p>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+<!-- End Bar Panel -->
+</section>
+
+<!-- Main Content -->
+<section id="content">
+    <!-- Cara Order -->
+    <div class="container">
+        <div class="text-h1">
+            <p class="text-oten">Cara Order Desain</p>
         </div>
         <div class="row">
-            @foreach ($dataorder as $item)
-            <div class="card-order"
-                style="border: solid 4px rgba(0, 110, 255, 0.815);border-radius: 20px; height: 260px;">
-                <div class="row mt-0">
-                    <img class="profil-card mb-1" src="
-                    
-                    @if(!is_null($item->avatar))
-                    {{asset('/assets/profile/'.$item->avatar)}}
-                
-                    @else
-                    {{asset('/assets/profile/default.jpg')}}
-                    @endif
-                    
-                    " alt="profil">
-                    <p class="text-oten text_capital"
-                        style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold; line-height: 2">
-                        {{$item->name}}
-                    </p>
-                </div>
-
-                <p class="text-uppercase p-1 m-2 bold"
-                    style="margin:5px 0; border-top:solid rgb(184, 184, 184) 1px; border-bottom:solid rgb(184, 184, 184) 1px;">
-                    {{$item->title_design}}</p>
-
-                <p class="ml-2 mr-2 mt-2 mb-3">{{$item->description}}</p>
-                <div class="row m-2 ">
-                    <p class="font-size-mini"><b>Deadline:</b> {{$item->deadline}}</p>
-                    <p class="font-size-mini ml-auto"><b>Anggaran:</b> {{$item->budget}}</p>
-                </div>
-                <form method="post">
-                    <input type="text" id="name" name="name" value="{{$item->name}}" hidden>
-                    <input type="text" id="no_hp" name="no_hp" value="{{$item->no_hp}}" hidden>
-                    <button class="btn btn-success br-md" style="width: 40%; margin-right: 30%; margin-left: 30%;"
-                        type="button" id="sendwa" name="sendwa">Konfirmasi</button>
-                </form>
-            </div>
-            @endforeach
-        </div>
-    </section>
-    <!-- End Order List -->
-</div>
-</section>
-@endsection
-
-@section('modal')
-
-<!-- Modal Review-->
-<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content br-0">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Tulis Review Kamu</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/review/create" method="post">
-                    {{ csrf_field() }}
-                    <input type="text" name="name" class="form-control" value="{{auth()->user()->name}}" hidden>
-                    <input type="text" name="user_id" class="form-control" value="{{auth()->user()->id}}" hidden>
-                    <input type="text" name="avatar" class="form-control" value="{{auth()->user()->avatar}}" hidden>
-                    <div class="form-group">
-                        <textarea class="form-control" name="review" rows="4" style="border-radius: 0"
-                            placeholder="Pengerjaan designnya cepat, harga bisa menyesuaikan . . ."></textarea>
+            <div class="col-lg-12">
+                <div class="row text-center d-flex justify-content-center">
+                    <div class="col-lg">
+                        <div class="text-box">
+                            <img src="{{asset('assets/cari.png')}}" alt="cari" class="icon-md">
+                            <p class="text-h3">Cari Desain yang Diinginkan</p>
+                            <p>Anda bisa memilih desain yang diinginkan dengan melihat portofolio desain dari
+                                para desainer sesuaikan keinginan anda</p>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" style="border-radius: 0">Kirim Review</button>
+                    <div class="col-lg">
+                        <div class="text-box">
+                            <img src="{{asset('assets/bayar.png')}}" alt="cari" class="icon-md">
+                            <p class="text-h3">Isi Catata Desain dan Bayar</p>
+                            <p>Isi catatan desain yang anda inginkan kemudian diskusikan bersama desainer
+                                kemudian <br>
+                                lakukan pembayaran yang aman <br> melalui akun AkuDesain</p>
+                        </div>
                     </div>
-                </form>
+                    <div class="col-lg">
+                        <div class="text-box">
+                            <img src="{{asset('assets/phone.png')}}" alt="cari" class="icon-md">
+                            <p class="text-h3">Desain Selesai</p>
+                            <p>Desain yang anda inginkan <br> selesai tepat waktu</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- End Modal Review-->
+    <!-- End Cara Order -->
 
+    <div class="container">
+        <!-- Desain Terbaru -->
+        <p class="text-h1 text-oten mb-0" style="text-align: left;">Desain Terbaru</p>
+        <div class="col-lg-12">
+            <div class="row d-flex justify-content-center">
+                @foreach ($datadesign as $item)
+                <a href="/detail/{{$item->id}}" class="card br-0"
+                    style="border: solid 4px rgba(0, 110, 255, 0.815);height: 275px;">
+                    <div class="row mt-0">
+                        <img class="profil-card mb-1" src="
+                        
+                        @if(!is_null($item->avatar))
+                        {{asset('/assets/profile/'.$item->avatar)}}
+                    
+                        @else
+                        {{asset('/assets/profile/default.jpg')}}
+                        @endif
+                        
+                        " alt="profil">
+                        <p class="text-oten text_capital"
+                            style="margin:5px 0; padding: 5px 0; font-size: 18px; font-weight: bold;">
+                            {{$item->name}}
+                        </p>
+                    </div>
+                    <div class="image"
+                        style="height: 220px; width:220px; background-image: url('{{asset('/assets/design/'.$item->design1)}}'); background-repeat: no-repeat; background-size: cover; background-position: center; margin-right: 6px; margin-left: 6px;">
+                    </div>
+                    <p class="text-h3 text_capital text-oten" style="margin:5px 0;">{{$item->title}}</p>
+                </a>
+                @endforeach
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <a href="{{route('design')}}" class="btn btn-success">Lihat Desain Lainnya</a>
+            </div>
+        </div>
+        <!-- End Desain Terbaru -->
+
+        <!-- Kenapa Harus AkuDesain -->
+        <p class="text-h1 text-oten">Kenapa Harus AkuDesain?</p>
+        <div class="row" style="margin-bottom: 100px;">
+            <div class="col-lg-12">
+                <div class="row text-center d-flex justify-content-center">
+                    <div class="col-lg">
+                        <div class="text-box">
+                            <img src="{{asset('assets/choose.png')}}" alt="cari" class="icon-md">
+                            <p class="text-h3">Kemudahan Dalam Memilih Desain</p>
+                            <p> <br>Pilih desain yang anda inginkan dengan berbagai pilihan desain yang sesuai
+                                dengan keperluan anda serta kemudahan dalam revisi desain</p>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="text-box">
+                            <img src="{{asset('assets/user.png')}}" alt="cari" class="icon-md">
+                            <p class="text-h3">Kemudahan dan Keamanan Pembayaran</p>
+                            <p>Metode pembayaran yang beragam akan memudahkan anda. Serta pembayaran akan kami
+                                pegang terlebih dahulu sebelum kami teruskan ke desainer sehingga transaksi menjadi
+                                aman</p>
+                        </div>
+                    </div>
+                    <div class="col-lg">
+                        <div class="text-box">
+                            <img src="{{asset('assets/working.png')}}" alt="cari" class="icon-md">
+                            <p class="text-h3">Jaminan Harga Terjangkau</p>
+                            <p> <br>Dapatkan desain yang anda inginkan dengan harga terjangkau</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Kenapa Harus AkuDesain -->
+    </div>
+
+    <!-- Testimoni -->
+    <div class="container">
+        <p class="text-h1 text-oten" style="margin-bottom: 10px">Apa Kata Mereka?</p>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row p-5 d-flex justify-content-center" style="padding-top: 5rem !important;">
+                                @foreach ($datareview as $item)
+                                <div class="col-md-4 text-center">
+                                    <div class="profile">
+                                        <img src="
+                                        
+                                        @if(!is_null($item->avatar))
+                                        {{asset('/assets/profile/'.$item->avatar)}}
+                                    
+                                        @else
+                                        {{asset('/assets/profile/default.jpg')}}
+                                        @endif
+                                        
+                                        " class="user" alt="profile">
+                                        <h3 class="text_capital">{{$item->name}}</h3>
+                                        <div class="text-area">
+                                            <p class="text-review">"{{$item->review}}"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="row p-5 d-flex justify-content-center" style="padding-top: 5rem !important;">
+                                @foreach ($datareview2 as $item)
+                                <div class="col-md-4 text-center">
+                                    <div class="profile">
+                                        <img src="{{asset('/assets/profile/'.$item->avatar)}}" class="user"
+                                            alt="profile">
+                                        <h3 class="text_capital">{{$item->name}}</h3>
+                                        <div class="text-area">
+                                            <p class="text-review">"{{$item->review}}"</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
 @endsection
 
-@section('script')
+@section('footer')
+<div class="row">
+    <div class="col-lg-5">
+        <img src="{{asset('assets/logo.png')}}" alt="logo" style="height: 35px; width: 200px; margin: 30px 0;">
+        <p class="text-white">AkuDesain adalah sebuah platform yang memudahkan anda dalam menemukan
+            jasa
+            desain.
+            Sistem AkuDesain
+            sangat mudah dipakai, cepat dalam respon dan membantu and secara akurat untuk mencari
+            freelancer
+            yang tepat</p>
+    </div>
+    <div class="col-lg-2"></div>
+    <div class="col-lg-5 text-white">
+        <p style=" margin: 30px 0 10px 0; font-weight: bold;">Kontak Kami</p>
+        <ul>
+            <li>
+                <a href="#" style="text-decoration: none; color: white;">
+                    <div class="row">
+                        <img src="{{asset('assets/ig.png')}}" alt="ig"
+                            style="width: 18px; height: 18px; margin: 5px 10px;">
+                        <p>akudesain_id</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#" style="text-decoration: none; color: white;">
+                    <div class="row">
+                        <img src="{{asset('assets/facebook.png')}}" alt="fb" class="mini-icon"
+                            style="width: 12px; height: 18px; margin: 5px 14px;">
+                        <p>AkuDesain</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#" style="text-decoration: none; color: white;">
+                    <div class="row">
+                        <img src="{{asset('assets/mail.png')}}" alt="mail"
+                            style="width: 18px; height: 14px; margin: 5px 10px;">
+                        <p>AkuDesain.official@gmail.com</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#" style="text-decoration: none; color: white;">
+                    <div class="row">
+                        <img src="{{asset('assets/wa.png')}}" alt="wa"
+                            style="width: 16px; height: 14px; margin: 5px 10px;">
+                        <p>+62 87 776 966 876</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
 
-<!-- Send WA-->
-<script>
-    $(document).ready(function() {
-    $('#sendwa').click(function() {
-        var name = $('#name').val();
-        var nowa = $('#no_hp').val();
-        var pesan = 
-            ' **ADA PESANAN AKUDESAIN** \n\n' + 
-            ' Hay saya ' + name + 
-            '\n saya memesan design pada anda, mari lihat di aplikasi Akudesain.' + '\n\n' + 
-            'www.akudesain.id/dashboard/designer';
-
-        pesan = encodeURI(pesan);
-        window.open('https://api.whatsapp.com/send?phone='+ nowa +'&text=' + pesan, '_blank');
-    });
-});
-</script>
-<!-- End Send WA-->
-
-<script>
-    var slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex-1].alt;
-}
-</script>
+</div>
 @endsection

@@ -1,6 +1,6 @@
 @extends('dashboard.master-user')
 
-@section('name','Dashboard | Akudesain')
+@section('name','Dashboard Panel | Akudesain')
 
 
 @section('content')
@@ -9,7 +9,7 @@
     <!-- Order List -->
     <section class="mt-5">
         <div class="row mb-3">
-            <a href="/dashboard" class="btn" style="height:40px; width:180px; background-color: rgb(206, 206, 206);">
+            <a href="/dashboard/order" class="btn" style="height:40px; width:180px; background-color: rgb(206, 206, 206);">
                 <p class="color-oten" style="text-align: center;"><b>Daftar Pesanan</b></p>
             </a>
             <a href="/dashboard/user/ongoing" class="btn"

@@ -1,6 +1,6 @@
 @extends('dashboard.master-user')
 
-@section('name','Edit | Akudesain')
+@section('name','Edit Profile | Akudesain')
 
 @section('content')
 

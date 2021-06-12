@@ -15,10 +15,21 @@ class DashboardController extends Controller
         if (auth()->user()->role == 'designer') {
             return redirect('/dashboard/designer');
         }
+
+        $datadesign = Design::all();
+        $row = 1;
+        $datareview = Review::where('row', $row)->get();
+        $datareview2 = Review::where('row', $row + 1)->get();
+        return view('dashboard.index', ['datadesign' => $datadesign, 'datareview' => $datareview, 'datareview2' => $datareview2]);
+    }
+
+    public function order()
+    {
         $id = auth()->user()->id;
         $dataorder = Order::where('user_id', $id)->get();
-        return view('dashboard.index', compact('dataorder'));
+        return view('dashboard.order', compact('dataorder'));
     }
+
 
 
     public function view_design(Request $request)

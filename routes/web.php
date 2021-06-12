@@ -38,6 +38,7 @@ Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin
 Route::get('/signup', function () {
     return view('auths.signup');
 })->name('signup');
+
 Route::get('/signup/client', [UserController::class, 'client'])->name('signup-client');
 Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->name('dashboard-admin')->middleware('auth');
 Route::get('/design/search', [DesignController::class, 'search'])->name('search');
@@ -47,6 +48,7 @@ Route::get('/dashboard/user/edit-profile', [DashboardController::class, 'profile
 
 Route::get('/signup/designer', [UserController::class, 'designer'])->name('signup-designer');
 Route::get('/dashboard', [DashboardController::class, 'user'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard/order', [DashboardController::class, 'order'])->name('dashboard')->middleware('auth');
 Route::get('/dashboard/designer', [DashboardController::class, 'view_designer'])->name('designer-dashboard')->middleware('auth');
 Route::post('/process-store', [ProcessController::class, 'store'])->middleware('auth');
 Route::get('/dashboard/designer/ongoing', [ProcessController::class, 'process'])->middleware('auth');
